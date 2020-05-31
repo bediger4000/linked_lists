@@ -12,7 +12,7 @@ func SortedMerge(list1, list2 *Node) (head *Node) {
 		return list1
 	}
 	if list2 == nil {
-		return list2
+		return list1
 	}
 
 	listp := &list1
