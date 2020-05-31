@@ -1,4 +1,4 @@
-// list implements a linked list of integer-valued nodes,
+// Package list implements a linked list of integer-valued nodes,
 // along with input and output functions.
 package list
 
@@ -8,4 +8,5 @@ type Node struct {
 	Next *Node
 }
 
+// Stack type to segregate LIFO functions
 type Stack Node
