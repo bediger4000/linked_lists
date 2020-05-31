@@ -8,5 +8,8 @@ type Node struct {
 	Next *Node
 }
 
-// Stack type to segregate LIFO functions
-type Stack Node
+// Queue (FIFO) type made out of 2 LIFOs
+type Queue struct {
+	in  *Node
+	out *Node
+}
