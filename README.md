@@ -8,23 +8,15 @@ A compendium of linked list developer interview questions in Go
 $ go build cp.go
 $ go build merge.go
 $ go build stk.go
+$ go build queue.go
+$ go build reverse.go
 ```
 
-## Running
-
-### Merge two sorted lists
-
-```
-$ ./merge  10 6 2 0 -- 11 8 7 4 1
-10 -> 6 -> 2 -> 0 -> 
-11 -> 8 -> 7 -> 4 -> 1 -> 
-11 -> 10 -> 8 -> 7 -> 6 -> 4 -> 2 -> 1 -> 0 -> 
-```
-
-The lists are in ascending order.
-The obvious follow-on is merging N sorted lists.
+## Problems and puzzles
 
 ### Read in multiple lists
+
+This is actually just a test for problems that require more than 1 list.
 
 ```
 $ ./cp 1 3 0 12 -- 5 -- 6 7 8 9 -- 100 99 98
@@ -44,4 +36,90 @@ Empty: true
 0 2 10 1 
 ```
 
-The follow-on here is to build a LIFO, a queue, from 2 linked lists.
+### Build a LIFO, a queue from 2 linked lists
+
+Build a LIFO, a queue, from 2 linked lists.
+
+```
+$ ./queue 1 2 3 4 5
+1 2 3 4 5
+```
+
+### Merge two sorted lists
+
+```
+$ ./merge  10 6 2 0 -- 11 8 7 4 1
+10 -> 6 -> 2 -> 0 -> 
+11 -> 8 -> 7 -> 4 -> 1 -> 
+11 -> 10 -> 8 -> 7 -> 6 -> 4 -> 2 -> 1 -> 0 -> 
+```
+
+The lists are in ascending order.
+The obvious follow-on is merging N sorted lists.
+
+### Reverse a linked list in place
+
+This amounts to taking the head element off a linked list,
+and setting that element's pointer to the reversed list.
+Repeat until the linked list is empty, and all elements are on the reveresed list.
+
+```
+$ ./reverse 1 2 3 4
+1 -> 2 -> 3 -> 4 -> 
+4 -> 3 -> 2 -> 1 -> 
+```
+## Cracking the Coding Interview
+
+Linked list questions.
+
+## Interview Question 2.3
+
+Implement an algorithm to delete a node in the middle
+(i.e., any node but the first and last node, not necessarily
+the exact middle) of a singly linked list, given only access
+to that node
+
+### Example
+
+Input: remove the node c from the linked list
+
+    a->b->c->d->e->f
+
+Result: nothing is returned, but the new linked list looks like
+
+    a->b->d->e->f
+
+### Analysis
+
+This is a strange question.
+"Given only access to that node" implies a function that takes a `*Node`,
+pointing to the node you want to remove from the list.
+
+You don't have a pointer to the previous node,
+which is what you'd need to surgically remove a node from a list.
+The best you can do is copy the remaining list items' data "one back",
+and trim off the final node.
+This is going to leave dangling pointers in languages without garbage collection
+unless you're very careful.
+
+### Interview Question 2.8
+
+Given a circular linked list, implement an algorithm that returns
+the node at the beginning of the loop.
+
+#### Circular linked list
+
+A (corrupt) linked list in which a node's next pointer points
+to an earlier node, so as to make a loop in the linked list.
+
+#### Example
+
+* Input: a -> b -> c -> d -> e -> c
+* Output: c
+
+#### Analysis
+
+This isn't the usual definition of a "circular linked list".
+This is just a list with (mistakenly) a cycle in it.
+
+
