@@ -57,6 +57,16 @@ $ ./merge  10 6 2 0 -- 11 8 7 4 1
 The lists are in ascending order.
 The obvious follow-on is merging N sorted lists.
 
+### Daily Coding Problem: Problem #559 [Medium] 
+
+This problem was asked by Google.
+
+Given k sorted singly linked lists, write a function to merge all the lists
+into one sorted singly linked list.
+
+I haven't tried this one. Apparently there's a way to take advantage of the
+sorted lists so that it's not an O(N^2) algorithm.
+
 ### Reverse a linked list in place
 
 This amounts to taking the head element off a linked list,
