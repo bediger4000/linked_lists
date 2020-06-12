@@ -57,6 +57,16 @@ $ ./merge  10 6 2 0 -- 11 8 7 4 1
 The lists are in ascending order.
 The obvious follow-on is merging N sorted lists.
 
+### Find the middle item in a linked list
+
+Set two `*Node` pointers to head of list.
+One steps through list 2 at a time,
+the other pointer steps one at a time.
+When the 2x pointer gets to the end of the list,
+the other pointer holds address of  middle item.
+Except for even-number-length lists.
+It's arguable what the "middle" of those lists is.
+
 ### Daily Coding Problem: Problem #559 [Medium] 
 
 This problem was asked by Google.
