@@ -88,6 +88,15 @@ $ ./reverse 1 2 3 4
 1 -> 2 -> 3 -> 4 -> 
 4 -> 3 -> 2 -> 1 -> 
 ```
+
+### Is a list palindromic?
+
+Given a singly linked list of integers,
+determine whether or not it's a palindrome.
+
+Uses the "finding the middle element of a list" and "reversing a list in place" tasks.
+Ruins the original list in order to find out if that list qualifies as a palindrome.
+
 ## Cracking the Coding Interview
 
 Linked list questions.
