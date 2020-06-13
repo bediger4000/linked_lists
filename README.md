@@ -94,8 +94,22 @@ $ ./reverse 1 2 3 4
 Given a singly linked list of integers,
 determine whether or not it's a palindrome.
 
-Uses the "finding the middle element of a list" and "reversing a list in place" tasks.
-Ruins the original list in order to find out if that list qualifies as a palindrome.
+My algorithm uses the "finding the middle element of a list" and "reversing a list in place" tasks.
+Ruins the original list in order to find out if that list qualifies as a palindrome,
+although the code could put the original list back together, if so required.
+
+This might make a good interview question if you have a lot of time to check coding ability.
+Any "check palindrome" algorithm will integrate other algorithms (in my case, reverse-in-place,
+and find-the-middle-item) to accomplish a larger task.
+This problem would let an interviewer know that a candidate could analyze a problem,
+breaking it into smaller pieces,
+then integrate the smaller pieces' results into a whole.
+The problem demands design skills, as well as small algorithm knowledge.
+The downsides are that there's a couple of gotchas:
+finding the "middle" of a list could bog down the candidate down
+in deciding which node to use as the middle of an even-number-sized list.
+The case of a palindrome with a single unique element in the middle
+(which will only occur in an odd-number-sized list) might ruin the candidate's efforts.
 
 ## Cracking the Coding Interview
 
