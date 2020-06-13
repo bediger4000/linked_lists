@@ -39,6 +39,8 @@ func main() {
 	fmt.Println()
 }
 
+// Remove a node from a list by copying the next node to the
+// current node. A little wasteful.
 func Remove(node *Node) {
 	for node != nil {
 		tmp := node.Next
