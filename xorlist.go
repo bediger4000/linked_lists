@@ -7,87 +7,116 @@ import (
 	"unsafe"
 )
 
+// XorNode instances make up an XOR-list, the conceptual doubly-linked
+// list of the problem statement. Go's type safety made this harder than
+// it would be in C. The "both" element should constitute an Xor of the
+// addresses of the node previous and the node next in list from the
+// XorNode instance in question.
 type XorNode struct {
 	data int
 	both uintptr
 }
 
-func add(root *XorNode, element *XorNode) *XorNode {
-	fmt.Printf("root at %p, new node %p\n", root, element)
-	if root == nil {
-		return element
+// add puts a new node on the other end of the list from head.
+// Use it like: head,tail = add(head, newnode)
+// Returns head and tail of the XOR-list in defiance of the spec
+// so that I can see the XOR-list work forwards and backwards
+func add(head *XorNode, element *XorNode) (*XorNode, *XorNode) {
+	if head == nil {
+		// element is the first element in list
+		return element, element
 	}
-	ptr := uintptr(unsafe.Pointer(root))
-	node := root
-
-	for node.both != 0 {
-		ptr = ptr ^ node.both
-		node = (*XorNode)(unsafe.Pointer(ptr))
+	if head.both == 0 {
+		// head is the only element in the list
+		head.both = uintptr(unsafe.Pointer(element))
+		element.both = uintptr(unsafe.Pointer(head))
+		return head, element
 	}
-
-	tmp := uintptr(unsafe.Pointer(node)) ^ uintptr(unsafe.Pointer(element))
-	node.both = uintptr(unsafe.Pointer(tmp))
-	element.both = 0
-
-	return root
-}
-
-func get(root *XorNode, index int) *XorNode {
-	ptr := uintptr(unsafe.Pointer(root))
-	node := root
-
-	for i := 0; i < index; i++ {
-		ptr = ptr ^ uintptr(unsafe.Pointer(node.both))
-		prevnode := node
-		node = (*XorNode)(unsafe.Pointer(ptr))
-		if prevnode == node {
+	node := head
+	var previous uintptr
+	for {
+		both := uintptr(unsafe.Pointer(node.both))
+		next := both ^ previous
+		nd := uintptr(unsafe.Pointer(node))
+		if next == 0 {
+			// node is the last element in list
+			node.both = node.both ^ uintptr(unsafe.Pointer(element))
+			// element.both xor of node and nil
+			element.both = nd
 			break
 		}
+		previous = nd
+		node = (*XorNode)(unsafe.Pointer(next))
 	}
 
-	return node
+	return head, element
 }
 
-func print(node *XorNode) {
+// get returns a node at index wantIndex (0-indexed!)
+// based on the head node. Returns nil if the list is
+// too short to have an element at wantIndex
+func get(head *XorNode, wantIndex int) *XorNode {
+	node := head
+	var previous uintptr
+	index := 0
+	for {
+		if index == wantIndex {
+			return node
+		}
+		next := uintptr(unsafe.Pointer(node.both)) ^ previous
+		if next == 0 {
+			break // end of list
+		}
+		previous = uintptr(unsafe.Pointer(node))
+		node = (*XorNode)(unsafe.Pointer(next))
+		index++
+	}
+	return nil // didn't get to wantIndex
+}
 
-	ptr := uintptr(unsafe.Pointer(node))
-
-	for node != nil {
-		fmt.Printf("ptr %x\n", ptr)
-		fmt.Printf("node at %p\n", node)
-		fmt.Printf("node.data %d\n", node.data)
-		fmt.Printf("node.both %x\n", node.both)
-
-		prevnode := node
-		ptr = ptr ^ uintptr(unsafe.Pointer(node.both))
-		node = (*XorNode)(unsafe.Pointer(ptr))
-		fmt.Printf("next node at %p\n", node)
-		if node == prevnode {
+// print writes a representation of the data in an XOR-list
+// on stdout: 0 -> 1 -> 2 -> nil, or something like that,
+// depends on the list.
+func print(head *XorNode) {
+	node := head
+	var previous uintptr
+	for {
+		fmt.Printf("%d -> ", node.data)
+		both := uintptr(unsafe.Pointer(node.both))
+		next := both ^ previous
+		if next == 0 {
+			fmt.Println("nil")
 			break
 		}
+		previous = uintptr(unsafe.Pointer(node))
+		node = (*XorNode)(unsafe.Pointer(next))
 	}
-	fmt.Println()
 }
 
 func main() {
 
 	var head, tail *XorNode
 
+	// Build the list from string representations of numbers
+	// appearing on command line.
 	nodeCount := 0
 	for _, str := range os.Args[1:] {
 		n, err := strconv.Atoi(str)
 		if err != nil {
 			continue
 		}
-		tail = &XorNode{data: n}
-		head = add(head, tail)
+		head, tail = add(head, &XorNode{data: n})
 		nodeCount++
 	}
 	fmt.Printf("%d nodes in list\n", nodeCount)
+
+	// Print the list forward and backward just to prove the Xor-property
+	fmt.Printf("Front to back:\n")
 	print(head)
 	fmt.Printf("Back to front:\n")
 	print(tail)
 
+	// Retrieve every node in the list by its index
 	for i := 0; i < nodeCount; i++ {
 		node := get(head, i)
 		fmt.Printf("node %d at %p, value %d\n", i, node, node.data)
