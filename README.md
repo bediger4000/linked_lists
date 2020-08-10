@@ -127,6 +127,57 @@ If using a language that has no pointers (such as Python), you can assume
 you have access to get_pointer and dereference_pointer functions that
 converts between nodes and memory addresses.
 
+#### Analysis of XOR linked list
+
+Some programming languages will be more conducive to getting this
+problem correct than others.
+The problem statement acknowledges that when it says to assume
+some magical functions if you're doing it in Python.
+I chose Go, which has pretty strict type safety,
+and memory safety even though it has pointers.
+The combination of the two safeties causes my code to look a bit odd.
+
+The Go compiler allows the programmer to convert any pointer address
+to a pointer of an arbitrary type
+via the semi-magic function `unsafe.Pointer()`.
+One can then convert the pointer of aribtrary type to a
+numerical value of type `uintptr`
+Go will do bitwise operations like Xor on `uintptr` values.
+So my code converts pointers to `uintptr` numerical values and back
+a lot.
+
+I've done this problem (in C) as an exercize in the past,
+because it just seemed so outlandish.
+I think that someone who was just informed of this very hacky
+idea (node carries prev XOR next as a single field)
+might have a lot of trouble with it.
+`node->next` and `node->prev` are one thing,
+but combining them via XOR seems to add cognitive burden to the problem.
+
+I think this problem doesn't merit the "hard" rating
+for a candidate who has experimented with XOR operations
+in the past, but to someone (entry-level or even mid-level)
+who hasn't explored XOR, it might seem very difficult.
+Keeping track of 3 pointers (current, previous, next) is error-prone
+even in regular doubly linked list operations,
+the XOR just adds to the difficulty,
+as would the shenanigans working around Go's type- and memory-safety.
+The programming language chosen should influence the interviewer's
+final judgement.
+The interviewer should expect some mild flailing from any candidate,
+but should look for candidates that work it out carefully.
+
+The candidate can't really do much to redeem themselves if they
+don't get the nature of XOR.
+One consequence of the XOR is that the `both` field of the head
+of the list will contain the pointer to the 2nd element,
+and the `both` field of the tail of the list will be the pointer
+to the next-to-last-element.
+This almost mandates special cases for inserting the first and second
+elements of a list.
+All intermediate list node have some unnatural numeric value that
+doesn't look like a pointer.
+
 ## Cracking the Coding Interview
 
 Linked list questions.
