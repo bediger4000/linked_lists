@@ -56,10 +56,8 @@ func add(head *XorNode, element *XorNode) (*XorNode, *XorNode) {
 // based on the head node. Returns nil if the list is
 // too short to have an element at wantIndex
 func get(head *XorNode, wantIndex int) *XorNode {
-	node := head
 	var previous uintptr
-	index := 0
-	for {
+	for node, index := head, 0; true; index++ {
 		if index == wantIndex {
 			return node
 		}
@@ -69,7 +67,6 @@ func get(head *XorNode, wantIndex int) *XorNode {
 		}
 		previous = uintptr(unsafe.Pointer(node))
 		node = (*XorNode)(unsafe.Pointer(next))
-		index++
 	}
 	return nil // didn't get to wantIndex
 }
@@ -120,5 +117,12 @@ func main() {
 	for i := 0; i < nodeCount; i++ {
 		node := get(head, i)
 		fmt.Printf("node %d at %p, value %d\n", i, node, node.data)
+	}
+
+	node := get(head, nodeCount+10)
+	if node == nil {
+		fmt.Printf("Correctly did not find node at index %d\n", nodeCount+10)
+	} else {
+		fmt.Printf("Incorrectly found node at index %d, value %d\n", nodeCount+10, node.data)
 	}
 }
