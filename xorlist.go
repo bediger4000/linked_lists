@@ -35,17 +35,17 @@ func add(head *XorNode, element *XorNode) (*XorNode, *XorNode) {
 	node := head
 	var previous uintptr
 	for {
-		both := uintptr(unsafe.Pointer(node.both))
-		next := both ^ previous
-		nd := uintptr(unsafe.Pointer(node))
+		// Node "holds a field named both, which is an XOR of the next node
+		// and the previous node".
+		next := uintptr(unsafe.Pointer(node.both)) ^ previous
+		previous = uintptr(unsafe.Pointer(node))
 		if next == 0 {
 			// node is the last element in list
 			node.both = node.both ^ uintptr(unsafe.Pointer(element))
 			// element.both xor of node and nil
-			element.both = nd
+			element.both = previous
 			break
 		}
-		previous = nd
 		node = (*XorNode)(unsafe.Pointer(next))
 	}
 
@@ -79,13 +79,12 @@ func print(head *XorNode) {
 	var previous uintptr
 	for {
 		fmt.Printf("%d -> ", node.data)
-		both := uintptr(unsafe.Pointer(node.both))
-		next := both ^ previous
+		next := uintptr(unsafe.Pointer(node.both)) ^ previous
+		previous = uintptr(unsafe.Pointer(node))
 		if next == 0 {
 			fmt.Println("nil")
 			break
 		}
-		previous = uintptr(unsafe.Pointer(node))
 		node = (*XorNode)(unsafe.Pointer(next))
 	}
 }
