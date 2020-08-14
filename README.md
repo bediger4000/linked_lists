@@ -79,6 +79,12 @@ sorted lists so that it's not an O(N^2) algorithm.
 
 ### Reverse a linked list in place
 
+This is: Daily Coding Problem: Problem #465 [Easy]
+
+This problem was asked by Google.
+
+Given the head of a singly linked list, reverse it in-place.
+
 This amounts to taking the head element off a linked list,
 and setting that element's pointer to the reversed list.
 Repeat until the linked list is empty, and all elements are on the reveresed list.
