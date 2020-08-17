@@ -175,13 +175,17 @@ Look for candidates that can work this problem out carefully.
 
 The candidate can't really do much to redeem themselves if they
 don't get the nature of XOR.
+If the interviewer notices this,
+it might be worthwhile to help out on the XOR part,
+unless you want to see a candidate's innate inspiration ability,
+which doesn't exist in anybody.
 One consequence of the XOR is that the `both` field of the head
 of the list will contain the pointer to the 2nd element,
 and the `both` field of the tail of the list will be the pointer
 to the next-to-last-element.
 This almost mandates special cases for inserting the first and second
 elements of a list.
-All intermediate list node have some unnatural numeric value that
+All intermediate list node `both` fields have some unnatural numeric value that
 doesn't look like a pointer.
 
 ### Remove kth Last element
