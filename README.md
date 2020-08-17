@@ -170,8 +170,8 @@ the XOR just adds to the difficulty,
 as would the shenanigans working around Go's type- and memory-safety.
 The programming language chosen should influence the interviewer's
 final judgement.
-The interviewer should expect some mild flailing from any candidate,
-but should look for candidates that work it out carefully.
+The interviewer should expect some mild flailing from any candidate.
+Look for candidates that can work this problem out carefully.
 
 The candidate can't really do much to redeem themselves if they
 don't get the nature of XOR.
@@ -208,6 +208,11 @@ eliminated from the list.
 Since "k is guaranteed to be smaller than the length of the list",
 I'm not sure there are any corner cases worth talking about.
 This is a very straightforward problem.
+I guess if the interviewer is being picky about "in one pass",
+[my solution](removekthlast.go) uses 2 for-loops,
+one to get the lead pointer to the k-2'th place in the list,
+and one to find the end of the list from there
+and increment both lead and trailing pointers.
 
 If you're interviewing for an entry-level position,
 this might be worth asking.
