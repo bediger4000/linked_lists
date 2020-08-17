@@ -184,6 +184,35 @@ elements of a list.
 All intermediate list node have some unnatural numeric value that
 doesn't look like a pointer.
 
+### Remove kth Last element
+
+This problem was asked by Google.
+
+Given a singly linked list and an integer k,
+remove the kth last element from the list.
+k is guaranteed to be smaller than the length of the list.
+
+The list is very long,
+so making more than one pass is prohibitively expensive.
+
+Do this in constant space and in one pass.
+
+#### Analysis
+
+This problem requires 2 pointers into the last,
+one that leads, and a 2nd that's k+1 elements behind.
+When the leader is null/nil,
+the 2nd pointer has the node before the element to be
+eliminated from the list.
+
+Since "k is guaranteed to be smaller than the length of the list",
+I'm not sure there are any corner cases worth talking about.
+This is a very straightforward problem.
+
+If you're interviewing for an entry-level position,
+this might be worth asking.
+Otherwise, I don't see it.
+
 ## Cracking the Coding Interview
 
 Linked list questions.
@@ -237,5 +266,3 @@ to an earlier node, so as to make a loop in the linked list.
 
 This isn't the usual definition of a "circular linked list".
 This is just a list with (mistakenly) a cycle in it.
-
-
