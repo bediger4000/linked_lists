@@ -28,7 +28,7 @@ Found 4 lists
 100 -> 99 -> 98 -> 
 ```
 
-### Build a FIFO, a stack, from a linked list
+### Build a LIFO, a stack, from a linked list
 
 ```
 $ ./stk 1 10 2 0
@@ -36,14 +36,33 @@ Empty: true
 0 2 10 1 
 ```
 
-### Build a LIFO, a queue from 2 linked lists
+### Daily Coding Problem: Problem #443 [Medium] 
 
-Build a LIFO, a queue, from 2 linked lists.
+This problem was asked by Apple.
+
+Implement a queue using two stacks.
+Recall that a queue is a FIFO (first-in, first-out)
+data structure with the following methods:
+enqueue, which inserts an element into the queue, and dequeue, which removes it.
 
 ```
 $ ./queue 1 2 3 4 5
 1 2 3 4 5
 ```
+
+#### Analysis
+
+This is kind of Old School.
+As far as I know, there's only one way to do this.
+I'll refer to the two stacks as "enqueue stack" and "dequeue stack".
+On a dequeue, if the dequeue stack is empty,
+pop each element off the enqueue stack and push it on the dequeue stack,
+leaving the enqueue stack empty.
+On an enqueue, push the item on the enqueue stack.
+
+If the candidate doesn't know this one, the problem is worthless.
+Even if the candidate knows the answer, it's just some easy stack manipulation.
+Pushing or popping an item from the head of a list is about as basic as things come.
 
 ### Merge two sorted lists
 
