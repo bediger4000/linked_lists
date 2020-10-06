@@ -32,7 +32,7 @@ func main() {
 		fmt.Printf("Element at '%p' contains '%d'\n", node, node.Data)
 	}
 
-	list.Remove(node)
+	Remove(node)
 
 	fmt.Printf("list without '%d':\n", desired)
 	list.Print(head)
@@ -41,7 +41,7 @@ func main() {
 
 // Remove a node from a list by copying the next node to the
 // current node. A little wasteful.
-func Remove(node *Node) {
+func Remove(node *list.Node) {
 	for node != nil {
 		tmp := node.Next
 		if tmp != nil {
