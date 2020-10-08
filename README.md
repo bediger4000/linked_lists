@@ -16,6 +16,8 @@ $ go build reverse.go
 
 ### Read in multiple lists
 
+[Code](merge.go)
+
 This is actually just a test for problems that require more than 1 list.
 
 ```
@@ -31,6 +33,8 @@ Found 4 lists
 ---
 
 ### Build a LIFO, a stack, from a linked list
+
+[Code](stk.go)
 
 ```
 $ ./stk 1 10 2 0
@@ -71,6 +75,8 @@ Pushing or popping an item from the head of a list is about as basic as things c
 
 ### Merge two sorted lists
 
+[Code](sort.go)
+
 ```
 $ ./merge  10 6 2 0 -- 11 8 7 4 1
 10 -> 6 -> 2 -> 0 -> 
@@ -84,6 +90,8 @@ The obvious follow-on is merging N sorted lists.
 ---
 
 ### Find the middle item in a linked list
+
+[Code](middle.go)
 
 Set two `*Node` pointers to head of list.
 One steps through list 2 at a time,
@@ -111,6 +119,8 @@ sorted lists so that it's not an O(N^2) algorithm.
 
 This is: Daily Coding Problem: Problem #465 [Easy]
 
+[Code](reverse.go)
+
 This problem was asked by Google.
 
 Given the head of a singly linked list, reverse it in-place.
@@ -128,6 +138,8 @@ $ ./reverse 1 2 3 4
 ---
 
 ### Is a list palindromic?
+
+[Code](palindrome.go)
 
 Given a singly linked list of integers,
 determine whether or not it's a palindrome.
@@ -152,6 +164,8 @@ The case of a palindrome with a single unique element in the middle
 ---
 
 ### XOR linked list
+
+[Code](xorlist.go)
 
 Daily Coding Problem: Problem #590 [Hard]
 
@@ -226,6 +240,8 @@ doesn't look like a pointer.
 
 ### Remove kth Last element
 
+[Code](removekthlast.go)
+
 This problem was asked by Google.
 
 Given a singly linked list and an integer k,
@@ -266,6 +282,10 @@ Linked list questions.
 
 ## Interview Question 2.3
 
+[Code](removeitem.go)
+
+[Another version](removeitem2.go)
+
 Implement an algorithm to delete a node in the middle
 (i.e., any node but the first and last node, not necessarily
 the exact middle) of a singly linked list, given only access
@@ -300,6 +320,8 @@ unless you're very careful.
 
 Given a circular linked list, implement an algorithm that returns
 the node at the beginning of the loop.
+
+[Code](cycletest.go)
 
 #### Circular linked list
 
