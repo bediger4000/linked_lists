@@ -28,6 +28,8 @@ Found 4 lists
 100 -> 99 -> 98 -> 
 ```
 
+---
+
 ### Build a LIFO, a stack, from a linked list
 
 ```
@@ -35,6 +37,7 @@ $ ./stk 1 10 2 0
 Empty: true
 0 2 10 1 
 ```
+---
 
 ### Daily Coding Problem: Problem #443 [Medium] 
 
@@ -64,6 +67,8 @@ If the candidate doesn't know this one, the problem is worthless.
 Even if the candidate knows the answer, it's just some easy stack manipulation.
 Pushing or popping an item from the head of a list is about as basic as things come.
 
+---
+
 ### Merge two sorted lists
 
 ```
@@ -76,6 +81,8 @@ $ ./merge  10 6 2 0 -- 11 8 7 4 1
 The lists are in ascending order.
 The obvious follow-on is merging N sorted lists.
 
+---
+
 ### Find the middle item in a linked list
 
 Set two `*Node` pointers to head of list.
@@ -86,6 +93,8 @@ the other pointer holds address of  middle item.
 Except for even-number-length lists.
 It's arguable what the "middle" of those lists is.
 
+---
+
 ### Daily Coding Problem: Problem #559 [Medium] 
 
 This problem was asked by Google.
@@ -95,6 +104,8 @@ into one sorted singly linked list.
 
 I haven't tried this one. Apparently there's a way to take advantage of the
 sorted lists so that it's not an O(N^2) algorithm.
+
+---
 
 ### Reverse a linked list in place
 
@@ -113,6 +124,8 @@ $ ./reverse 1 2 3 4
 1 -> 2 -> 3 -> 4 -> 
 4 -> 3 -> 2 -> 1 -> 
 ```
+
+---
 
 ### Is a list palindromic?
 
@@ -135,6 +148,8 @@ finding the "middle" of a list could bog down the candidate down
 in deciding which node to use as the middle of an even-number-sized list.
 The case of a palindrome with a single unique element in the middle
 (which will only occur in an odd-number-sized list) might ruin the candidate's efforts.
+
+---
 
 ### XOR linked list
 
@@ -207,6 +222,8 @@ elements of a list.
 All intermediate list node `both` fields have some unnatural numeric value that
 doesn't look like a pointer.
 
+---
+
 ### Remove kth Last element
 
 This problem was asked by Google.
@@ -241,6 +258,8 @@ If you're interviewing for an entry-level position,
 this might be worth asking.
 Otherwise, I don't see it.
 
+---
+
 ## Cracking the Coding Interview
 
 Linked list questions.
@@ -274,6 +293,8 @@ The best you can do is copy the remaining list items' data "one back",
 and trim off the final node.
 This is going to leave dangling pointers in languages without garbage collection
 unless you're very careful.
+
+---
 
 ### Interview Question 2.8
 
