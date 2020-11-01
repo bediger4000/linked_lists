@@ -276,6 +276,78 @@ Otherwise, I don't see it.
 
 ---
 
+### Daily Coding Problem: Problem #699 [Easy]
+
+This problem was asked by Airbnb.
+
+Given a linked list and a positive integer k, rotate the list to the right by k places.
+
+For example,
+given the linked list 7 -> 7 -> 3 -> 5 and k = 2,
+it should become 3 -> 5 -> 7 -> 7.
+
+Given the linked list 1 -> 2 -> 3 -> 4 -> 5 and k = 3,
+it should become 3 -> 4 -> 5 -> 1 -> 2.
+
+#### Analysis
+
+There's an error with the problem statement.
+One of the two examples is incorrect.
+First example gives k = 2, then gives the 3-valued node,
+the third node in the list,
+as the head of the rotated list.
+
+The second exmaple gives k = 3, then wants the 3rd element of the old
+list as the head of the new list.
+
+* k = 2, third node as head of rotated list.
+* k = 3, 4th node as head of rotated list.
+
+One or the other is incorrect.
+
+I take the second example as incorrect.
+
+I thought of two ways to do this.
+
+* [First algorithm](rotate1.go)
+  1. Find kth node of list, or return nil if list is too short.
+  2. Find tail node of list. List is in original form at this point.
+  3. Set tail.Next to head node. List is now circular.
+  4. Find Node before kth node. This is modified list's tail node
+  5. Set node-before-kth-node's Next element to nil
+  6. Return kth node as head of rotated list
+* [Second algorithm](rotate2.go)
+  1. Find tail node of list.
+  2. Set tail.Next to head of list, making a circular list.
+  3. Move head and tail k items through list
+  4. Set tail.Next to nil
+  5. return head as head of rotated list
+
+The second algorithm has the benefit that any list, even of length 1,
+can be rotated any number of elements.
+There's no problem with "too short" lists.
+
+This isn't a bad problem for a whiteboard interview.
+It has a data structure,
+it's not something that candidates would have done a lot in the past.
+It has pointers.
+The candidate has to design an algorithm,
+and there's corner cases like short list, zero length list,
+rotate by more than list length,
+rotate by zero
+to take into account.
+
+The mistaken problem statement could actually be a way to try out
+a candidate's critical thinking skills.
+Identifying bugs in requirements is necessary.
+
+If the candidate finds their attempts at clarification of the
+problematic test case(s) rebuffed,
+they should consider not interviewing further with that company.
+That's a red flag about company culture and processes.
+
+---
+
 ## Cracking the Coding Interview
 
 Linked list questions.
