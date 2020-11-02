@@ -337,9 +337,9 @@ rotate by more than list length,
 rotate by zero
 to take into account.
 
-The mistaken problem statement could actually be a way to try out
+The mistaken problem statement could be a way to try out
 a candidate's critical thinking skills.
-Identifying bugs in requirements is necessary.
+Identifying bugs in requirements is necessary on the job.
 
 If the candidate finds their attempts at clarification of the
 problematic test case(s) rebuffed,
