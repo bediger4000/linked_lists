@@ -10,7 +10,8 @@ import (
 
 /*
 
-Given a linked list and a positive integer k, rotate the list to the right by k places.
+Given a linked list and a positive integer k,
+rotate the list to the right by k places.
 
 For example,
 given the linked list 7 -> 7 -> 3 -> 5 and k = 2,
