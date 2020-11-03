@@ -10,7 +10,8 @@ import (
 
 /*
 
-Given a linked list and a positive integer k, rotate the list to the right by k places.
+Given a linked list and a positive integer k,
+rotate the list to the right by k places.
 
 For example,
 given the linked list 7 -> 7 -> 3 -> 5 and k = 2,
@@ -40,7 +41,9 @@ func main() {
 	}
 }
 
-// rotate
+// rotate creates a circular linked list, then
+// walks it k places with both head and tail pointers,
+// setting tail.Next to nil after that walk.
 func rotate(k int, head *list.Node) *list.Node {
 
 	// Find tail node at end of original list
