@@ -16,7 +16,17 @@ func main() {
 	list.Print(list1)
 	fmt.Println()
 
-	reversed := list.Reverse(list1)
+	reversed := Reverse(list1)
 	list.Print(reversed)
 	fmt.Println()
+}
+
+func Reverse(head *Node) (reversed *Node) {
+	for head != nil {
+		tmp := head
+		head = head.Next
+		tmp.Next = reversed
+		reversed = tmp
+	}
+	return
 }
