@@ -6,10 +6,7 @@ package list
 // in merged list, no longer are separate entities.
 func SortedMerge(list1, list2 *Node) (head *Node) {
 	if list1 == nil {
-		if list2 == nil {
-			return
-		}
-		return list1
+		return list2
 	}
 	if list2 == nil {
 		return list1
