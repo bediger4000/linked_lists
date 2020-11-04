@@ -59,7 +59,9 @@ $ ./queue 1 2 3 4 5
 
 #### Analysis
 
-This is kind of Old School.
+[Code](list/queue.go)
+
+This is Old School.
 As far as I know, there's only one way to do this.
 I'll refer to the two stacks as "enqueue stack" and "dequeue stack".
 On a dequeue, if the dequeue stack is empty,
@@ -297,7 +299,7 @@ First example gives k = 2, then gives the 3-valued node,
 the third node in the list,
 as the head of the rotated list.
 
-The second exmaple gives k = 3, then wants the 3rd element of the old
+The second example gives k = 3, then wants the 3rd element of the old
 list as the head of the new list.
 
 * k = 2, third node as head of rotated list.
