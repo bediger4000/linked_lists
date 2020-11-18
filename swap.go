@@ -38,20 +38,26 @@ func swapnodes(head *list.Node) *list.Node {
 	second := head.Next
 	previous := &head
 
-	if second != nil {
-		head = second
-	}
-
 	for second != nil {
+		// swap two nodes
 		first.Next = second.Next
 		second.Next = first
 
+		// keep the list in order.
+		// need a node to point to second
+		// that currently points to first.
 		*previous = second
+		// get ready for the next pass through the
+		// loop. Might need to update first.Next with
+		// the address of a swapped node.
 		previous = &(first.Next)
 
+		// Advance first and second pointers.
+		// first.Next holds the next node in the list.
 		first = first.Next
 		second = nil
 		if first != nil {
+			// since first has advanced, set second appropriately.
 			second = first.Next
 		}
 	}
