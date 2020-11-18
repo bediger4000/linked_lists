@@ -362,6 +362,8 @@ given `1 -> 2 -> 3 -> 4`, return `2 -> 1 -> 4 -> 3`.
 
 ### Analysis
 
+[Code](swap.go)
+
 This is somewhat harder than the usual linked list question.
 You have to keep track of 3 pointers,
 the two list nodes that switch positions,
