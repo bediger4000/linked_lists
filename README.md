@@ -350,6 +350,60 @@ That's a red flag about company culture and processes.
 
 ---
 
+## Daily Coding Problem: Problem #714 [Easy]
+
+This problem was asked by Google.
+
+Given the head of a singly linked list,
+swap every two nodes and return its head.
+
+For example,
+given `1 -> 2 -> 3 -> 4`, return `2 -> 1 -> 4 -> 3`.
+
+### Analysis
+
+This is somewhat harder than the usual linked list question.
+You have to keep track of 3 pointers,
+the two list nodes that switch positions,
+and something that
+gets set to the new-first-of-two-swapped-nodes.
+
+This last "something" is the hard part.
+Once the program has swapped Next pointers for two nodes,
+the Next pointer of the node previous to those two
+still points to what's now the second of the two swapped nodes.
+I chose to use a pointer-to-a-pointer,
+storing the address of the Next pointer that needs updating
+once the next two nodes get swapped.
+
+### Interview analysis
+
+Because of needing to keep track of a 3rd pointer,
+the Next pointer that needs to point to a swapped node,
+I'd say this is more of a "medium" than an easy.
+It's not a bad problem for a linked list question,
+which tend to the basic,
+and demand pointer swapping book-keeping more than anything else.
+
+If I got this in an interview,
+I'd point out the necessity of having this 3rd pointer around,
+because I certainly wouldn't get it correct without some experimentation.
+In fact, I tried to do this problem in a single sitting
+to simulate a whiteboard interview.
+I failed because I didn't immediately see the necessity of the 3rd pointer.
+It was only after literally sleeping on the problem overnight
+that I see the need for the 3rd pointer.
+
+Even if the candidate hoses up the programming,
+test cases like zero-length-list, single item list,
+odd-number-of-nodes lists should get extra credit from the interviewer.
+
+The interviewer should probably be ready to give a hint
+about the 3rd pointer, although I'm not sure what hint I'd give
+if I threw this problem out for discussion or whiteboarding.
+
+---
+
 ## Cracking the Coding Interview
 
 Linked list questions.
