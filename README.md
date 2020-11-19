@@ -405,7 +405,7 @@ about the 3rd pointer, although I'm not sure what hint I'd give
 if I threw this problem out for discussion or whiteboarding.
 
 ---
-## Daily Coding Problem: Problem #715 [Easy]o
+## Daily Coding Problem: Problem #715 [Easy]
 
 This problem was asked by Google.
 
@@ -432,11 +432,12 @@ to the ends of the list.
 Both singly and doubly-linked list methods visit 2N nodes to do the check.
 For the doubly-linked list method,
 there are no ugly pointer manipulations to create a reversed-in-place linked list,
-so no need to reverse the half of the list reversed-in-place.
+so no need to reverse the half of the list reversed-in-place
+to get the list back to its original state.
 
 As an interview question, this is OK.
 It probably even merits an "easy" rating.
-The candidate can even do the exact same method as for a singly-linked list,
+The candidate can do the exact same method as for a singly-linked list,
 but this wouldn't demonstrate knowledge of doubly-linked lists.
 Comparing algorithms for the two types of lists is probably where the
 candidate can show knowledge and competency,
