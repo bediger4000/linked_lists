@@ -405,6 +405,44 @@ about the 3rd pointer, although I'm not sure what hint I'd give
 if I threw this problem out for discussion or whiteboarding.
 
 ---
+## Daily Coding Problem: Problem #715 [Easy]o
+
+This problem was asked by Google.
+
+Determine whether a doubly linked list is a palindrome.
+What if it's singly linked?
+
+For example,
+1 -> 4 -> 3 -> 4 -> 1 returns True
+while 1 -> 4 returns False.
+
+### Analysis
+
+Palindromic singly-linked-lists are [above](#is-a-list-palindromic).
+
+[Code](dlpalindrome.go) for doubly-linked list palindrome check.
+
+I chose to find the tail of the doubly-linked list,
+then walk the list forward and backward comparing node data values.
+This is conceptually easier than the singly-linked list method
+of walking halfway while making a reversed-in-place linked list,
+then comparing node data values from the middle of the list
+to the ends of the list.
+
+Both singly and doubly-linked list methods visit 2N nodes to do the check.
+For the doubly-linked list method,
+there are no ugly pointer manipulations to create a reversed-in-place linked list,
+so no need to reverse the half of the list reversed-in-place.
+
+As an interview question, this is OK.
+It probably even merits an "easy" rating.
+The candidate can even do the exact same method as for a singly-linked list,
+but this wouldn't demonstrate knowledge of doubly-linked lists.
+Comparing algorithms for the two types of lists is probably where the
+candidate can show knowledge and competency,
+and where the interviewer could get a better feel for the candidate's ability.
+
+---
 
 ## Cracking the Coding Interview
 
