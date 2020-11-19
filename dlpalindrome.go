@@ -8,6 +8,12 @@ import (
 )
 
 func main() {
+	if len(os.Args) == 1 {
+		fmt.Fprintf(os.Stderr, "Determine if a doubly-linked list is palindromic\n")
+		fmt.Fprintf(os.Stderr, "Usage: %s N0 [N1 N2 N3 ...]\n", os.Args[0])
+		os.Exit(1)
+	}
+
 	head := dllist.Compose(os.Args[1:])
 
 	fmt.Printf("Original list:\n")
@@ -33,6 +39,9 @@ func main() {
 	fmt.Printf("It is NOT palindromic\n")
 }
 
+// isPalindrome returns true if the input list is "palindromic",
+// has the same element values going both ways along the list,
+// until the middle node, if one exists
 func isPalindrome(head *dllist.Node) bool {
 	if head == nil {
 		return true
