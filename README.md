@@ -445,6 +445,40 @@ and where the interviewer could get a better feel for the candidate's ability.
 
 ---
 
+### Daily Coding Problem: Problem #760 [Hard]
+
+This problem was asked by Apple.
+
+Given a linked list, uniformly shuffle the nodes.
+What if we want to prioritize space over time?
+
+### Analysis
+
+I haven't tried this one yet.
+
+"Uniformly shuffling" a finite number of items might be a bit
+tricky on even a 64-bit CPU.
+2<sup>64</sup> is 18446744073709551616.
+21! is 51090942171709440000, which is greater than that.
+The number of bits in the seed of a pseudo-random number generator
+will have to be large for even smallish linked lists.
+Looks like a 64-bit seed would probably leave out some arrangements
+of a 21-element or greater linked list.
+Beyond that, there's [no good method](https://math.stackexchange.com/questions/1637656/measure-of-card-shuffling-randomness)
+for measuring the randomness of shuffling small numbers of items.
+
+This is really 2 questions in one,
+giving the candidate a hint about what solutions
+the interviewer wants to see.
+Prioritizing time over space might mean creating an array
+from the linked list, as the Great Tree-List Recursion problem
+has you do, shuffling the array, then creating a new list from
+the shuffled array.
+Prioritizing space over time is begging the candidate to
+at least sketch an algorithm that uses less space.
+
+---
+
 ## Cracking the Coding Interview
 
 Linked list questions.
