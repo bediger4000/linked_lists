@@ -244,6 +244,8 @@ doesn't look like a pointer.
 
 [Code](removekthlast.go)
 
+This is Daily Coding Problem: Problem #765 [Medium], among others.
+
 This problem was asked by Google.
 
 Given a singly linked list and an integer k,
