@@ -238,6 +238,22 @@ elements of a list.
 All intermediate list node `both` fields have some unnatural numeric value that
 doesn't look like a pointer.
 
+I found an [XOR trick](https://florian.github.io//xor-trick/) web page
+which explains the Xor-ing of previous and next addresses to get
+a single "pointer" that contains both addresses.
+The author also explains a lot of other Xor interview questions,
+and sums up with this analysis of Xor tricks as interview questions:
+
+```
+... interview questions based on this trick do not seem like a great idea.
+They require knowing a slightly obscure trick, but once that trick is known,
+there is not much left to solve ... There is
+also barely a way to show algorithmic thinking ... and no
+good way to make use of data structures.
+```
+
+This question almost proves that author wrong.
+
 ---
 
 ### Remove kth Last element
