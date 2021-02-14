@@ -463,7 +463,7 @@ and where the interviewer could get a better feel for the candidate's ability.
 
 ---
 
-### Daily Coding Problem: Problem #760 [Hard]
+## Daily Coding Problem: Problem #760 [Hard]
 
 This problem was asked by Apple.
 
@@ -494,6 +494,38 @@ has you do, shuffling the array, then creating a new list from
 the shuffled array.
 Prioritizing space over time is begging the candidate to
 at least sketch an algorithm that uses less space.
+
+---
+## Daily Coding Problem: Problem #800 [Medium]  
+
+This problem was asked by Fitbit.
+
+Given a linked list,
+rearrange the node values such that they appear in alternating
+```
+low -> high -> low -> high ...
+```
+form.
+
+For example,
+given
+```
+1 -> 2 -> 3 -> 4 -> 5
+```
+you should return
+```
+1 -> 3 -> 2 -> 5 -> 4.
+```
+
+### Analysis
+
+This appears to be nonsensically explained.
+Do the mean to rearranged the nodes like in 
+Daily Coding Problem: Problem #714?
+The example does nothing to further explain,
+it introduces more confusion.
+
+I haven't done this one yet.
 
 ---
 
