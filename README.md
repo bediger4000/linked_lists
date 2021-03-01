@@ -528,6 +528,104 @@ it introduces more confusion.
 I haven't done this one yet.
 
 ---
+# Daily Coding Problem: Problem #814 [Easy]
+
+This problem was asked by Microsoft.
+
+Let's represent an integer in a linked list format by having each
+node represent a digit in the number.
+The nodes make up the number in reversed order.
+
+For example, the following linked list:
+
+```
+1 -> 2 -> 3 -> 4 -> 5
+```
+
+is the number 54321.
+
+Given two linked lists in this format,
+return their sum in the same linked list format.
+
+For example, given
+
+```
+9 -> 9
+
+5 -> 2
+```
+
+return 124 (99 + 25) as:
+
+```
+4 -> 2 -> 1
+```
+
+### Analysis
+
+This is another old favorite.
+I recall reading an article about C++ back in the early 90s
+that used this sort of problem as a motivator for
+C++ objects and classes.
+
+The problem statement assumes Base 10,
+but it might behoove the candidate to ask about that.
+There's no particular reason for assuming a particular
+base.
+I took the easy way out, and worked with base 10.
+
+There's a few tricky pieces to any algorithm that
+does large number addition this way.
+
+The first tricky piece is carry.
+The obvious way to write this is to walk the two
+linked lists and create a new node for a third linked list,
+the "sum", with a data value that's the numerical sum
+of the data in the current nodes of the two linked lists.
+Adding any two single digit numbers can give you a result
+that's got a digit one place-value higher.
+For instance, in base 10, 9 + 9 = 18.
+Two original linked list nodes whose data sums to 10 or above
+need to set some kind of carry indicator.
+When carry indicator is set, the next node has to have
+a data value of the original lists' data summed, plus 1.
+Each new node's data value has to be checked to see if it's
+greater than 9, and then set the carry indicator if so.
+
+The second tricky piece is that if carry is set when
+the original lists are exhausted, the algorithm has to
+fill out a new node with a value of 1, and put it on
+the tail of the "sum" list.
+This is easy to forget to do.
+
+The third tricky piece is two original lists of different sizes.
+The problem statement cleverly doesn't mention this,
+but it's implicit in "adding two numbers".
+
+The fourth tricky piece is pathological inputs like:
+
+```
+0 -> 0 -> 0 -> 0
+1 -> 2 -> 3
+```
+
+Should the algorithm trim off any "leading" zeros?
+My implementation gives an answer of `1 -> 2 -> 3 -> 0 ->`
+in this case.
+It's seems like a lot of extra work to traverse the list
+to find a "leading" 0 or two.
+
+This isn't a bad problem for a junior or mid-level job interview,
+as long as the interviewer is willing to work along with the
+candidate.
+Knowing about a "carry bit" isn't going to be as common as
+it used to be, so the interviewer might need to remind a
+candidate of such a thing.
+
+The candidate can do worse than ask about mismatched list sizes,
+pathological inputs and so forth.
+
+---
 
 ## Cracking the Coding Interview
 
