@@ -58,53 +58,44 @@ func main() {
 	fmt.Println()
 }
 
+// add constructs a linked list with Data values the
+// sum of corresponding Data values from list1 and list2.
+// Has to reverse the list it constructs because
 func add(list1, list2 *list.Node) *list.Node {
-	var tail, result *list.Node
+	var stack *list.Node
 	carry := 0
 
-	for {
-		if list1 == nil || list2 == nil {
-			break
+	for list1 != nil || list2 != nil {
+		value := 0
+		if list1 != nil {
+			value += list1.Data
+			list1 = list1.Next
 		}
-		next := &list.Node{Data: list1.Data + list2.Data + carry}
+		if list2 != nil {
+			value += list2.Data
+			list2 = list2.Next
+		}
+		// New node constructed as a push onto a stack
+		stack = &list.Node{Data: value + carry, Next: stack}
 		carry = 0
-		if next.Data > 9 {
+		if stack.Data > 9 {
 			carry = 1
-			next.Data %= 10
+			stack.Data %= 10
 		}
-		list1 = list1.Next
-		list2 = list2.Next
-		if result == nil {
-			result = next
-		} else {
-			tail.Next = next
-		}
-		tail = next
-	}
-
-	remaining := list1
-	if remaining == nil {
-		remaining = list2
-	}
-
-	for remaining != nil {
-		next := &list.Node{Data: remaining.Data + carry}
-		carry = 0
-		if next.Data > 9 {
-			carry = 1
-			next.Data %= 10
-		}
-		remaining = remaining.Next
-		if result == nil {
-			result = next
-		} else {
-			tail.Next = next
-		}
-		tail = next
 	}
 
 	if carry > 0 {
-		tail.Next = &list.Node{Data: carry}
+		stack = &list.Node{Data: carry, Next: stack}
+	}
+
+	// reverse the stack into the order the problem
+	// statement wants.
+	var result *list.Node
+	for stack != nil {
+		tmp := stack.Next
+		stack.Next = result
+		result = stack
+		stack = tmp
 	}
 
 	return result
