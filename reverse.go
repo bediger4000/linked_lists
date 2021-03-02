@@ -25,6 +25,7 @@ func Reverse(head *list.Node) (reversed *list.Node) {
 	var tmp *list.Node
 	for head != nil {
 		tmp, head = head, head.Next
+		// have to assign to tmp for tmp.Next to be non-nil
 		tmp.Next, reversed = reversed, tmp
 	}
 	return
