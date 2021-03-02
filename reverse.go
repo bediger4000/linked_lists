@@ -21,7 +21,7 @@ func main() {
 	fmt.Println()
 }
 
-func Reverse(head *Node) (reversed *Node) {
+func Reverse(head *list.Node) (reversed *list.Node) {
 	for head != nil {
 		tmp := head
 		head = head.Next
