@@ -22,11 +22,10 @@ func main() {
 }
 
 func Reverse(head *list.Node) (reversed *list.Node) {
+	var tmp *list.Node
 	for head != nil {
-		tmp := head
-		head = head.Next
-		tmp.Next = reversed
-		reversed = tmp
+		tmp, head = head, head.Next
+		tmp.Next, reversed = reversed, tmp
 	}
 	return
 }
