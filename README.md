@@ -574,14 +574,19 @@ There's no particular reason for assuming a particular
 base.
 I took the easy way out, and worked with base 10.
 
+The order of the output linked list means keeping a pointer
+to the tail of the output list,
+or reversing it after completing it.
+
 There's a few tricky pieces to any algorithm that
 does large number addition this way.
 
 The first tricky piece is carry.
 The obvious way to write this is to walk the two
 linked lists and create a new node for a third linked list,
-the "sum", with a data value that's the numerical sum
+the "sum", with nodes that have a data value that's the numerical sum
 of the data in the current nodes of the two linked lists.
+
 Adding any two single digit numbers can give you a result
 that's got a digit one place-value higher.
 For instance, in base 10, 9 + 9 = 18.
@@ -601,6 +606,9 @@ This is easy to forget to do.
 The third tricky piece is two original lists of different sizes.
 The problem statement cleverly doesn't mention this,
 but it's implicit in "adding two numbers".
+It took me two attempts to realize that a single loop can walk
+two lists of different sizes, you just have to advance only
+the non-nil list nodes.
 
 The fourth tricky piece is pathological inputs like:
 
@@ -621,9 +629,11 @@ candidate.
 Knowing about a "carry bit" isn't going to be as common as
 it used to be, so the interviewer might need to remind a
 candidate of such a thing.
+The interviewer should not care about the base of the digits,
+as a carry will occur no matter what base the candidate uses.
 
 The candidate can do worse than ask about mismatched list sizes,
-pathological inputs and so forth.
+pathological inputs and input/output base of the digits.
 
 ---
 
