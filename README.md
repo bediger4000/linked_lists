@@ -2,6 +2,19 @@
 
 A compendium of linked list developer interview questions in Go
 
+[Why Do Interviewers Ask Linked List Questions?](https://hillelwayne.com/post/linked-lists/)?
+
+I wrote a Go [linked list package](list) to provide a framework
+for creating linked lists from textual representations,
+and printing outputs.
+
+I wrote a really simple [doubly-linked list package]() towards
+the same end.
+
+Both of these packages only have integer-valued list nodes.
+There's absolutely no reason to use these packages except to
+make developing answers to intervew questions.
+
 ## Building
 
 ```go
@@ -524,6 +537,9 @@ Do the mean to rearranged the nodes like in
 Daily Coding Problem: Problem #714?
 The example does nothing to further explain,
 it introduces more confusion.
+The example seems to want you to break the list
+into 2, equal-sized parts, then interleave nodes
+from the 2 parts.
 
 I haven't done this one yet.
 
