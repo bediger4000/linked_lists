@@ -8,12 +8,12 @@ I wrote a Go [linked list package](list) to provide a framework
 for creating linked lists from textual representations,
 and printing outputs.
 
-I wrote a really simple [doubly-linked list package]() towards
-the same end.
+I wrote a [doubly-linked list package](dllist) towards the same end.
+It's not as fully realized.
 
 Both of these packages only have integer-valued list nodes.
-There's absolutely no reason to use these packages except to
-make developing answers to intervew questions.
+There's absolutely no reason to use these packages except
+when developing answers to intervew questions.
 
 ## Building
 
