@@ -541,7 +541,8 @@ The example seems to want you to break the list
 into 2, equal-sized parts, then interleave nodes
 from the 2 parts.
 
-I haven't done this one yet.
+I haven't done this one,
+because I can't decide what I should do.
 
 ---
 # Daily Coding Problem: Problem #814 [Easy]
