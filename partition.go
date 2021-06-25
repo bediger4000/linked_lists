@@ -25,6 +25,7 @@ func partition(k int, head *list.Node) *list.Node {
 	for current := head; current != nil; current = tmp {
 		tmp = current.Next
 		current.Next = nil
+
 		if current.Data < k {
 			if beforeHead == nil {
 				beforeHead = current
@@ -35,6 +36,7 @@ func partition(k int, head *list.Node) *list.Node {
 			beforeTail = current
 			continue
 		}
+
 		if current.Data >= k {
 			if afterHead == nil {
 				afterHead = current
