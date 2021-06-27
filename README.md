@@ -654,6 +654,52 @@ pathological inputs and input/output base of the digits.
 
 ---
 
+# Daily Coding Problem: Problem #917 [Medium]
+
+This problem was asked by LinkedIn.
+
+Given a linked list of numbers and a pivot k,
+partition the linked list so that all nodes less than k come before
+nodes greater than or equal to k.
+
+For example, given the linked list 5 -> 1 -> 8 -> 0 -> 3 and k = 3,
+the solution could be 1 -> 0 -> 5 -> 8 -> 3.
+
+## Analysis
+
+The candidate needs to ask questions to solve this one.
+
+* Should the partitioning code make an entirely new list,
+or can it rearrange the given list?
+I'm going to write code that rearranges the given list.
+* Should the result sub-list nodes be in any particular order?
+The example has the result nodes in the same relative order
+after partitioning.
+Is this important?
+
+My [first code](partition.go) seems kind of clunky.
+It's essentially walking the original linked list,
+constructing two sub-lists based on the value of the
+current node's data.
+In this version I chose to keep the sub-list data values
+in the same relative order as in the original list.
+This means keeping a tail pointer for each sub-list,
+so the code can append to each sub-list.
+Keeping a tail pointer means some goofy-looking special case code.
+
+My [second version](partition2.go)
+reversed the relative order of the list items:
+it pushes list nodes on the 2 sub-lists as it finds them.
+This made the loop walking the original linked list much
+simpler, but necessitated finding the tail node of
+the "<" sub-list so as to append the ">=" sub list.
+
+My [third version](partition3.go)
+
+## Interview Analysis
+
+---
+
 ## Cracking the Coding Interview
 
 Linked list questions.
