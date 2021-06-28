@@ -2,7 +2,7 @@
 
 A compendium of linked list developer interview questions in Go
 
-[Why Do Interviewers Ask Linked List Questions?](https://hillelwayne.com/post/linked-lists/)?
+[Why Do Interviewers Ask Linked List Questions?](https://hillelwayne.com/post/linked-lists/)
 
 I wrote a Go [linked list package](list) to provide a framework
 for creating linked lists from textual representations,
@@ -702,7 +702,34 @@ No special case code except for a single
 It does keep a head and a tail pointer for the result list.
 I don't think there's any super clever way around that.
 
+In this problem's case, lines of code actually seem to reflect
+the difficulty of each of these versions:
+
+```
+bediger@mirabilis
+$ wc -l parti\*go
+  62 partition.go
+  59 partition2.go
+  49 partition3.go
+```
+
 ## Interview Analysis
+
+Inside the confines of [linked list questions](https://hillelwayne.com/post/linked-lists/)
+this isn't a bad question.
+The candidate gets to ask questions to clarify the problem.
+The interviewer gets to see a candidate work with a data structure.
+Candidates probably haven't seen it before.
+Implementation variation is possible, unlike
+"make a queue out of 2 linked lists".
+It doesn't require physical insight, or rely on a trick.
+There's no super-obscure O(n log n) solution.
+
+The candidate should propose test cases:
+
+* inputs with and without the parition value as a node value
+* zero and 1 item input lists
+* partition value as lowest and highest value in list
 
 ---
 
