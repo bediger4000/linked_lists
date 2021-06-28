@@ -288,7 +288,7 @@ Do this in constant space and in one pass.
 
 #### Analysis
 
-This problem requires 2 pointers into the last,
+This problem requires 2 pointers into the list,
 one that leads, and a 2nd that's k+1 elements behind.
 When the leader is null/nil,
 the 2nd pointer has the node before the element to be
@@ -722,14 +722,15 @@ The interviewer gets to see a candidate work with a data structure.
 Candidates probably haven't seen it before.
 Implementation variation is possible, unlike
 "make a queue out of 2 linked lists".
-It doesn't require physical insight, or rely on a trick.
+It doesn't require physical insight, or rely on a trick,
+like the Xor-both-pointers list.
 There's no super-obscure O(n log n) solution.
 
 The candidate should propose test cases:
 
-* inputs with and without the parition value as a node value
+* inputs with and without the pivot value as a node value
 * zero and 1 item input lists
-* partition value as lowest and highest value in list
+* pivot value as lowest and highest value in list
 
 ---
 
