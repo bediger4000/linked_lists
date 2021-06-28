@@ -674,13 +674,12 @@ or can it rearrange the given list?
 I'm going to write code that rearranges the given list.
 * Should the result sub-list nodes be in any particular order?
 The example has the result nodes in the same relative order
-after partitioning.
-Is this important?
+after partitioning, but it says "could be" about the example solution.
 
 My [first code](partition.go) seems kind of clunky.
-It's essentially walking the original linked list,
+It walks the original linked list,
 constructing two sub-lists based on the value of the
-current node's data.
+current node's data as it goes.
 In this version I chose to keep the sub-list data values
 in the same relative order as in the original list.
 This means keeping a tail pointer for each sub-list,
@@ -694,7 +693,14 @@ This made the loop walking the original linked list much
 simpler, but necessitated finding the tail node of
 the "<" sub-list so as to append the ">=" sub list.
 
-My [third version](partition3.go)
+My [third version](partition3.go) is my favorite.
+It creates a single result linked list by
+pushing "<" nodes on the head of the result list,
+and appending ">=" nodes on the tail of the result list.
+No special case code except for a single
+"is the result list head pointer nil?" test.
+It does keep a head and a tail pointer for the result list.
+I don't think there's any super clever way around that.
 
 ## Interview Analysis
 
