@@ -754,6 +754,18 @@ If so, adding a second pointer to each node,
 then creating a [BinaryHeap](https://en.wikipedia.org/wiki/Binary_heap)
 from the head of the list on through,
 then doing a Heapsort would satisfy the problem statement.
+This is essentially making the singly linked list into a doubly linked list,
+so I doubt this is the desired solution.
+
+[A Comparative Study of Linked List Sorting Algorithms](https://pages.mtu.edu/~shene/PUBLICATIONS/1996/3Conline.pdf),
+Ching-Kuang Shene, has a pragmatic study of a few well-known
+sorting algorithms as applied to linked lists.
+The paper is from 1996.
+It references non-x86 hardware,
+and non-Microsoft compilers:
+an elegant paper from a more civilized age.
+Shene finds Tree Sort as the fastest,
+but that's on a doubly linked list.
 
 ---
 
