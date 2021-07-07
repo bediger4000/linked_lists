@@ -545,7 +545,7 @@ I haven't done this one,
 because I can't decide what I should do.
 
 ---
-# Daily Coding Problem: Problem #814 [Easy]
+## Daily Coding Problem: Problem #814 [Easy]
 
 This problem was asked by Microsoft.
 
@@ -654,7 +654,7 @@ pathological inputs and input/output base of the digits.
 
 ---
 
-# Daily Coding Problem: Problem #917 [Medium]
+## Daily Coding Problem: Problem #917 [Medium]
 
 This problem was asked by LinkedIn.
 
@@ -665,7 +665,7 @@ nodes greater than or equal to k.
 For example, given the linked list 5 -> 1 -> 8 -> 0 -> 3 and k = 3,
 the solution could be 1 -> 0 -> 5 -> 8 -> 3.
 
-## Analysis
+### Analysis
 
 The candidate needs to ask questions to solve this one.
 
@@ -713,7 +713,7 @@ $ wc -l parti\*go
   49 partition3.go
 ```
 
-## Interview Analysis
+### Interview Analysis
 
 Inside the confines of [linked list questions](https://hillelwayne.com/post/linked-lists/)
 this isn't a bad question.
@@ -731,6 +731,29 @@ The candidate should propose test cases:
 * inputs with and without the pivot value as a node value
 * zero and 1 item input lists
 * pivot value as lowest and highest value in list
+
+---
+
+## Daily Coding Problem: Problem #930 [Medium]
+
+This problem was asked by Google.
+
+Given a linked list,
+sort it in O(n log n) time and constant space.
+
+For example,
+the linked list
+4 -> 1 -> -3 -> 99
+should become
+-3 -> 1 -> 4 -> 99.
+
+### Analysis
+
+Are you allowed to modify the data structure of the linked list?
+If so, adding a second pointer to each node,
+then creating a [BinaryHeap](https://en.wikipedia.org/wiki/Binary_heap)
+from the head of the list on through,
+then doing a Heapsort would satisfy the problem statement.
 
 ---
 
