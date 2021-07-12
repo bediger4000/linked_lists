@@ -541,8 +541,29 @@ The example seems to want you to break the list
 into 2, equal-sized parts, then interleave nodes
 from the 2 parts.
 
+The [Daily Coding Problem](https://www.amazon.com/dp/1793296634?psc=1&ref=ppx_yo2_dt_b_product_details)
+book has an alternate view:
+they think the problem statement means that every pair
+of two nodes should have a low valued node followed by a high
+valued node.
+The procedure they give will work on `1 -> 2 -> 3 -> 4 -> 5`
+to get the example output,
+but it seems to me that procedure won't work on some other inputs,
+like `1 -> 0 -> -1`.
+Performing that procedure would yield `0 -> -1 -> 1`.
+I conclude that the Daily Coding Problem book authors don't know either.
+
 I haven't done this one,
-because I can't decide what I should do.
+because I think the problem statement is vague,
+and the example doesn't clarify it.
+The Daily Coding problem comes up with a different interpretation
+than any I can see.
+
+It's just barely possible that the point of this question is
+to see if the candidate asks questions or just plows on with
+whatever interpretation comes to mind.
+It's also said that when the Trickbot ransomware gang recruited developers,
+they passed on candidates that asked too many questions.
 
 ---
 ## Daily Coding Problem: Problem #814 [Easy]
@@ -756,6 +777,13 @@ from the head of the list on through,
 then doing a Heapsort would satisfy the problem statement.
 This is essentially making the singly linked list into a doubly linked list,
 so I doubt this is the desired solution.
+
+If it's a doubly linked list to begin with,
+the [Great Tree List Recursion Problem]() is part of a solution.
+Create a binary search tree from the doubly linked list,
+then linearize the now-sorted tree.
+
+Both of these have the advantage of seeming "Medium" in difficulty.
 
 [A Comparative Study of Linked List Sorting Algorithms](https://pages.mtu.edu/~shene/PUBLICATIONS/1996/3Conline.pdf),
 Ching-Kuang Shene, has a pragmatic study of a few well-known
