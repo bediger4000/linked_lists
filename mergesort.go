@@ -22,7 +22,6 @@ func merge2(head *list.Node, listLength int) *list.Node {
 
 	var hd, tl *list.Node
 	append := func(n *list.Node) {
-		fmt.Printf("Appending node with %d\n", n.Data)
 		if hd == nil {
 			hd = n
 			tl = n
@@ -33,10 +32,9 @@ func merge2(head *list.Node, listLength int) *list.Node {
 	}
 
 	p := head
-	mergecount := 2
-	k := 1
+	mergecount := 2 // just to pass the first for-test
 
-	for mergecount > 1 {
+	for k := 1; mergecount > 1; k *= 2 {
 
 		mergecount = 0
 
@@ -47,12 +45,6 @@ func merge2(head *list.Node, listLength int) *list.Node {
 			for i := 0; q != nil && i < k; i++ {
 				psize++
 				q = q.Next
-			}
-			fmt.Printf("psize %d, p at %d\n", psize, p.Data)
-			if q != nil {
-				fmt.Printf("q at %d\n", q.Data)
-			} else {
-				fmt.Println("q holds nil")
 			}
 
 			qsize := psize
@@ -69,27 +61,14 @@ func merge2(head *list.Node, listLength int) *list.Node {
 				qsize--
 			}
 
-			fmt.Printf("1 psize %d, p at %d\n", psize, p.Data)
-			if q != nil {
-				fmt.Printf("1 qsize %d, q at %d\n", qsize, q.Data)
-			}
-
 			for ; psize > 0 && p != nil; psize-- {
-				fmt.Printf("psize %d\n", psize)
 				append(p)
 				p = p.Next
 			}
 
 			for ; qsize > 0 && q != nil; qsize-- {
-				fmt.Printf("qsize %d\n", qsize)
 				append(q)
 				q = q.Next
-			}
-			if p != nil {
-				fmt.Printf("2 psize %d, p at %d\n", psize, p.Data)
-			}
-			if q != nil {
-				fmt.Printf("2 qsize %d, q at %d\n", qsize, q.Data)
 			}
 
 			p = q
@@ -99,11 +78,9 @@ func merge2(head *list.Node, listLength int) *list.Node {
 
 		p = hd
 		head = hd
-		tl.Next = nil
 		hd = nil
+		tl.Next = nil
 		tl = nil
-
-		k *= 2
 	}
 
 	return head
