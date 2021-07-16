@@ -12,13 +12,13 @@ func main() {
 	list.PrintN(head, listLength+1)
 	fmt.Println()
 
-	nl := merge2(head, listLength)
+	nl := mergesort(head)
 	fmt.Println("Merged:")
 	list.PrintN(nl, listLength+1)
 	fmt.Println()
 }
 
-func merge2(head *list.Node, listLength int) *list.Node {
+func mergesort(head *list.Node) *list.Node {
 
 	var hd, tl *list.Node
 	append := func(n *list.Node) {
@@ -78,6 +78,7 @@ func merge2(head *list.Node, listLength int) *list.Node {
 
 		p = hd
 		head = hd
+
 		hd = nil
 		tl.Next = nil
 		tl = nil
