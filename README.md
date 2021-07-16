@@ -122,11 +122,34 @@ It's arguable what the "middle" of those lists is.
 
 This problem was asked by Google.
 
-Given k sorted singly linked lists, write a function to merge all the lists
+Given k sorted singly linked lists,
+write a function to merge all the lists
 into one sorted singly linked list.
 
-I haven't tried this one. Apparently there's a way to take advantage of the
-sorted lists so that it's not an O(N^2) algorithm.
+#### Analysis
+
+[Code](mergek.go)
+
+You can do this with a variation on merge sort:
+take the first list as a combined list.
+Merge every subsequent list with the combined list,
+to yield a new combined list.
+
+I'll buy this as a "[Medium]".
+If you're familiar with merge sort,
+you can conceptually extend it to multiple lists.
+
+The coding is moderately complex because you need to keep
+a "head" and a "tail" pointer for the merged list
+as you traverse two other linked lists.
+Since the linked lists are certainly of different sizes,
+you've got complicated conditions on loop termination,
+and you've got to account each of the two lists' extra length,
+should that arise.
+
+I think the candidate should point out these difficulties as
+potential test cases, along with the usual zero-length-list,
+and sorting k=0 and k=1 number of lists.
 
 ---
 
@@ -770,20 +793,11 @@ should become
 
 ### Analysis
 
-Are you allowed to modify the data structure of the linked list?
-If so, adding a second pointer to each node,
-then creating a [BinaryHeap](https://en.wikipedia.org/wiki/Binary_heap)
-from the head of the list on through,
-then doing a Heapsort would satisfy the problem statement.
-This is essentially making the singly linked list into a doubly linked list,
-so I doubt this is the desired solution.
-
 If it's a doubly linked list to begin with,
 the [Great Tree List Recursion Problem]() is part of a solution.
 Create a binary search tree from the doubly linked list,
 then linearize the now-sorted tree.
-
-Both of these have the advantage of seeming "Medium" in difficulty.
+This seems "medium" difficulty to me.
 
 [A Comparative Study of Linked List Sorting Algorithms](https://pages.mtu.edu/~shene/PUBLICATIONS/1996/3Conline.pdf),
 Ching-Kuang Shene, has a pragmatic study of a few well-known
@@ -792,8 +806,13 @@ The paper is from 1996.
 It references non-x86 hardware,
 and non-Microsoft compilers:
 an elegant paper from a more civilized age.
-Shene finds Tree Sort as the fastest,
+Shene finds Tree Sort as generally fastest,
 but that's on a doubly linked list.
+
+I [implemented](mergesort.go) [merge sort](https://en.wikipedia.org/wiki/Merge_sort).
+My version is close to the "bottom-up implementation with lists".
+It does not use a "small fixed size array",
+just some pointers and counters.
 
 ---
 
