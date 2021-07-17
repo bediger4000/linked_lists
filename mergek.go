@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"linked_lists/list"
 	"os"
@@ -8,10 +9,18 @@ import (
 
 func main() {
 
+	linearCombine := flag.Bool("k", false, "combine one at a time")
+	flag.Parse()
+
 	heads := list.MultiCompose(os.Args[1:])
 
+	var nl *list.Node
 	// each list has to be sorted
-	nl := mergek(heads)
+	if *linearCombine {
+		nl = mergek(heads)
+	} else {
+		nl = merge2(heads[0], heads[1])
+	}
 	fmt.Println("Merged:")
 	list.Print(nl)
 	fmt.Println()
@@ -73,4 +82,36 @@ func mergek(heads []*list.Node) *list.Node {
 	}
 
 	return combined
+}
+func merge2(p, q *list.Node) *list.Node {
+
+	var hd, tl *list.Node
+	append := func(n *list.Node) {
+		if hd == nil {
+			hd = n
+			tl = n
+			return
+		}
+		tl.Next = n
+		tl = n
+	}
+
+	for p != nil && q != nil {
+		if p.Data < q.Data {
+			append(p)
+			p = p.Next
+			continue
+		}
+		append(q)
+		q = q.Next
+	}
+
+	if p != nil {
+		tl.Next = p
+	}
+	if q != nil {
+		tl.Next = q
+	}
+
+	return hd
 }
