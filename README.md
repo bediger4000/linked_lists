@@ -13,7 +13,7 @@ It's not as fully realized.
 
 Both of these packages only have integer-valued list nodes.
 There's absolutely no reason to use these packages except
-when developing answers to intervew questions.
+when developing answers to interview questions.
 
 ## Building
 
@@ -23,7 +23,12 @@ $ go build merge.go
 $ go build stk.go
 $ go build queue.go
 $ go build reverse.go
+...
 ```
+
+More files than above exist in this repo.
+Most of the programs depend on the `list` package,
+or the `dllist` package, but nothing more.
 
 ## Problems and puzzles
 
@@ -100,7 +105,7 @@ $ ./merge  10 6 2 0 -- 11 8 7 4 1
 ```
 
 The lists are in ascending order.
-The obvious follow-on is merging N sorted lists.
+The obvious follow-on is [merging N sorted lists](#daily-coding-problem-problem-559-medium).
 
 ---
 
@@ -142,9 +147,9 @@ you can conceptually extend it to multiple lists.
 The coding is moderately complex because you need to keep
 a "head" and a "tail" pointer for the merged list
 as you traverse two other linked lists.
-Since the linked lists are certainly of different sizes,
-you've got complicated conditions on loop termination,
-and you've got to account each of the two lists' extra length,
+Since the linked lists could be of different sizes,
+you've got complicated conditions on loop termination.
+You've got to account each of the two lists' extra length,
 should that arise.
 
 I think the candidate should point out these difficulties as
