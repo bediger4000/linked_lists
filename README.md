@@ -137,8 +137,20 @@ into one sorted singly linked list.
 
 You can do this with a variation on merge sort:
 take the first list as a combined list.
-Merge every subsequent list with the combined list,
+Iteratively merge every subsequent list with the combined list,
 to yield a new combined list.
+
+Assuming the sorted singly linked lists arrive in an array,
+there's a method even closer to a merge sort.
+Write a function where
+if the argument array of lists has length 1,
+return that list.
+For an argument array of more than 1 list,
+divide the array into halves and recursively call this method
+with the left and write halves.
+Each method call returns a single, sorted linked list.
+Merge the return lists from the left and right half calls.
+Return that merged list.
 
 I'll buy this as a "[Medium]".
 If you're familiar with merge sort,
