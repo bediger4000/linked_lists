@@ -19,7 +19,7 @@ func main() {
 	if *linearCombine {
 		nl = mergek(heads)
 	} else {
-		nl = merge2(heads[0], heads[1])
+		nl = recursiveMerge(heads)
 	}
 	fmt.Println("Merged:")
 	list.Print(nl)
@@ -83,6 +83,17 @@ func mergek(heads []*list.Node) *list.Node {
 
 	return combined
 }
+
+func recursiveMerge(heads []*list.Node) *list.Node {
+	if len(heads) == 1 {
+		return heads[0]
+	}
+	l := len(heads) / 2
+	left := recursiveMerge(heads[:l])
+	right := recursiveMerge(heads[l:])
+	return merge2(left, right)
+}
+
 func merge2(p, q *list.Node) *list.Node {
 
 	var hd, tl *list.Node
