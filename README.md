@@ -190,6 +190,12 @@ $ ./reverse 1 2 3 4
 4 -> 3 -> 2 -> 1 -> 
 ```
 
+There's not a lot of coding for this one.
+Seems like this might be good for one of several small problems
+posed to an entry-level job candidate.
+Other than that, it seems like the interviewer would just
+be ensuring that the candidate knew the answer to this one.
+
 ---
 
 ### Is a list palindromic?
@@ -830,6 +836,8 @@ I [implemented](mergesort.go) [merge sort](https://en.wikipedia.org/wiki/Merge_s
 My version is close to the "bottom-up implementation with lists".
 It does not use a "small fixed size array",
 just some pointers and counters.
+So if you buy it's a merge sort,
+this does the task in O(n log n) time and constant space.
 
 ---
 
