@@ -20,6 +20,10 @@ func main() {
 
 func mergesort(head *list.Node) *list.Node {
 
+	if head == nil {
+		return nil
+	}
+
 	var hd, tl *list.Node
 	append := func(n *list.Node) {
 		if hd == nil {
