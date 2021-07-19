@@ -152,6 +152,16 @@ Each method call returns a single, sorted linked list.
 Merge the return lists from the left and right half calls.
 Return that merged list.
 
+There's a [suggestion](https://www.geeksforgeeks.org/merge-k-sorted-linked-lists-set-2-using-min-heap/)
+floating around the web that a min-heap of lists would work.
+My [code](mergeheap.go] (and [heap package](heap)) for this method.
+
+There's a lot more complexity in the min-heap version.
+A separate data structure and supporting functions need to exist
+apart from the code to deal with linked lists directly.
+
+#### Interview Analysis
+
 I'll buy this as a "[Medium]".
 If you're familiar with merge sort,
 you can conceptually extend it to multiple lists.
@@ -163,10 +173,26 @@ Since the linked lists could be of different sizes,
 you've got complicated conditions on loop termination.
 You've got to account each of the two lists' extra length,
 should that arise.
+This is a good problem for seeing if candidates recognize
+these possibilities.
 
-I think the candidate should point out these difficulties as
-potential test cases, along with the usual zero-length-list,
+If you chose to do the "min-heap" method, you've got a moderately
+complex data structure, the heap, to do as well.
+I feel like this would be a "[Hard]" solution to this problem.
+The problem statement doesn't suggest anything like "constant space"
+or "O(n log n)" to encourage the candidate to do this.
+If a candidate does this, the interviewer should be suitably impressed.
+
+I think the candidate should point out each method's peculiarities
+as potential test cases,
+along with the usual zero-length-list,
 and sorting k=0 and k=1 number of lists.
+The merge-sort-emulation, for example,
+should have even and odd number of input lists.
+The min-heap implementation should have a test case
+with small and large number of linked lists,
+and a test with large differences in list sizes.
+
 
 ---
 
