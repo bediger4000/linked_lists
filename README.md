@@ -155,6 +155,9 @@ Return that merged list.
 There's a [suggestion](https://www.geeksforgeeks.org/merge-k-sorted-linked-lists-set-2-using-min-heap/)
 floating around the web that a min-heap of lists would work.
 My [code](mergeheap.go] (and [heap package](heap)) for this method.
+There's no "O(n log n)" restriction or hint in the problem statement,
+so this algorithm would fit the problem even though it uses extra space,
+K nodes in an array in my heap implementation.
 
 There's a lot more complexity in the min-heap version.
 A separate data structure and supporting functions need to exist
@@ -864,6 +867,11 @@ It does not use a "small fixed size array",
 just some pointers and counters.
 So if you buy it's a merge sort,
 this does the task in O(n log n) time and constant space.
+
+![sorting benchmark data](mergesort.png)
+
+This looks pretty linear, but it could fit n\*log(n) as well.
+log-base-2 of n doesn't contribute much change as the order-of-magnitude of list length changes.
 
 ---
 
