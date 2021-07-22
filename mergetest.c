@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/time.h>
+#include <string.h>
 
 float elapsed_time(struct timeval before, struct timeval after);
 
@@ -17,6 +18,12 @@ int free_list_count = 0;
 struct Node *new_node(int value, struct Node *next);
 void free_list(struct Node *head);
 
+int preallocated = 0;
+struct Node *arrayallocation = NULL;
+int preallocated_node_count = 0;
+int next_node_index;
+void perform_preallocation(int node_count);
+
 struct Node *mergesort(struct Node *head);
 struct Node *randomValueList(int n);
 int isSorted(struct Node *head);
@@ -24,15 +31,29 @@ int isSorted(struct Node *head);
 int
 main(int ac, char **av)
 {
-	int n;
+	int c, n;
 	float total = 0.0;
 	struct timeval tv;
 
 	gettimeofday(&tv, NULL);
 	srandom(tv.tv_usec | getpid());
 
+    while (EOF != (c = getopt(ac, av, "p")))
+    {
+        switch (c)
+        {
+        case 'p':
+			preallocated = 1;
+		}
+	}
+
+
 	for (n = 10000; n < 8000000; n += 200000) {
 		int i;
+
+		if (preallocated) {
+			perform_preallocation(n);
+		}
 
 		for (i = 0; i < 11; i++) {
 			struct timeval before, after;
@@ -168,6 +189,15 @@ mergesort(struct Node *head) {
 
 struct Node *
 new_node(int value, struct Node *next) {
+	if (preallocated) {
+		struct Node *p = NULL;
+		if (next_node_index < preallocated_node_count) {
+			p = &(arrayallocation[next_node_index++]);
+			p->Data = value;
+			p->Next = next;
+		}
+		return p;
+	}
 	struct Node *n;
 	if (freeNodeList) {
 		n = freeNodeList;
@@ -182,10 +212,16 @@ new_node(int value, struct Node *next) {
 	return n;
 }
 
+/* frees entire sorted list at end of benchmarking run */
 void
 free_list(struct Node *head) {
 	if (head == NULL)
 		return;
+	if (preallocated) {
+		memset(arrayallocation, 0, sizeof(struct Node)*preallocated_node_count);
+		next_node_index = 0;
+		return;
+	}
 	while (head != NULL) {
 		struct Node *tmp = head->Next;
 		head->Data = -1;
@@ -224,4 +260,22 @@ elapsed_time(struct timeval before, struct timeval after)
         + (1.0E-6)*(float)(after.tv_usec - before.tv_usec);
 
     return r;
+}
+
+void
+perform_preallocation(int node_count)
+{
+	if (!preallocated)
+		return;
+	if (preallocated_node_count >= node_count)
+		return;
+
+	if (arrayallocation) {
+		free(arrayallocation);
+		arrayallocation = NULL;
+	}
+	preallocated_node_count = node_count;
+	next_node_index = 0;
+
+	arrayallocation = calloc(preallocated_node_count, sizeof(struct Node));
 }
