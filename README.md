@@ -868,10 +868,37 @@ just some pointers and counters.
 So if you buy it's a merge sort,
 this does the task in O(n log n) time and constant space.
 
+### Benchmarking
+
+I wrote a [benchmark program](mergetest.go) to try out the merge sorting.
+It creates randomly-chosen positive integer values for nodes,
+creates a linked list of a given size with these values,
+then times the merge sort.
+It does 11 runs at any given list size,
+but only uses runs 2 - 11 in the pious hope that doing one run "warms the cache",
+reducing jitter/goofiness due to paging problems.
+
+I ran the benchmark program on a Dell Latitude E6420 laptop,
+a Dell PowerEdge R530 rackmount server, and a MacBook Pro.
+
 ![sorting benchmark data](mergesort.png)
+
+All the hardware produced similar timings.
 
 This looks pretty linear, but it could fit n\*log(n) as well.
 log-base-2 of n doesn't contribute much change as the order-of-magnitude of list length changes.
+The discontinuities at 2 million, 4 million and possibly 1 million
+are puzzling, but probably involve paging or page size.
+
+In order to rule out garbage collection causing teh discontinuities,
+I wrote a [C transliteration](mergetest.c) of the benchmark program.
+It has a rudimentary linked list implementation,
+and it can either `malloc` every node on demand,
+or do a "slab allocation" of all nodes at any given list size.
+The C benchmark timings ran on the Dell Latitude E6420 laptop.
+The C timings are very similar to the Golang version,
+so I'm going to rule out garbage collection.
+
 
 ---
 
