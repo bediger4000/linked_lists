@@ -898,6 +898,8 @@ or do a "slab allocation" of all nodes at any given list size.
 The C benchmark timings ran on the Dell Latitude E6420 laptop.
 The C timings are very similar to the Golang version,
 so I'm going to rule out garbage collection.
+Additionally, in this case it looks like there's very little performance
+benefit to manually managing the linked list allocation/deallocation.
 
 
 ---
