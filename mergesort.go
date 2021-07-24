@@ -30,14 +30,13 @@ func mergesort(head *list.Node) *list.Node {
 	// (already initialized) linked list tail pointer.
 	var appendTl func(n *list.Node)
 	var hd, tl *list.Node
-	realappend := func(n *list.Node) {
-		tl.Next = n
-		tl = n
-	}
 	startAppend := func(n *list.Node) {
 		hd = n
 		tl = n
-		appendTl = realappend
+		appendTl = func(n *list.Node) {
+			tl.Next = n
+			tl = n
+		}
 	}
 	appendTl = startAppend
 
