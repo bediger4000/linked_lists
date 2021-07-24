@@ -24,16 +24,22 @@ func mergesort(head *list.Node) *list.Node {
 		return nil
 	}
 
+	// clever way to append to the tail of a list:
+	// first time, set hd and tl, and reset appendTl
+	// pointer to realappend, which just appends to a
+	// (already initialized) linked list tail pointer.
+	var appendTl func(n *list.Node)
 	var hd, tl *list.Node
-	append := func(n *list.Node) {
-		if hd == nil {
-			hd = n
-			tl = n
-			return
-		}
+	realappend := func(n *list.Node) {
 		tl.Next = n
 		tl = n
 	}
+	startAppend := func(n *list.Node) {
+		hd = n
+		tl = n
+		appendTl = realappend
+	}
+	appendTl = startAppend
 
 	p := head
 	mergecount := 2 // just to pass the first for-test
@@ -55,23 +61,23 @@ func mergesort(head *list.Node) *list.Node {
 
 			for psize > 0 && qsize > 0 && q != nil {
 				if p.Data < q.Data {
-					append(p)
+					appendTl(p)
 					p = p.Next
 					psize--
 					continue
 				}
-				append(q)
+				appendTl(q)
 				q = q.Next
 				qsize--
 			}
 
 			for ; psize > 0 && p != nil; psize-- {
-				append(p)
+				appendTl(p)
 				p = p.Next
 			}
 
 			for ; qsize > 0 && q != nil; qsize-- {
-				append(q)
+				appendTl(q)
 				q = q.Next
 			}
 
@@ -86,6 +92,7 @@ func mergesort(head *list.Node) *list.Node {
 		hd = nil
 		tl.Next = nil
 		tl = nil
+		appendTl = startAppend
 	}
 
 	return head
