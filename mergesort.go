@@ -26,7 +26,7 @@ func mergesort(head *list.Node) *list.Node {
 
 	// clever way to append to the tail of a list:
 	// first time, set hd and tl, and reset appendTl
-	// pointer to realappend, which just appends to a
+	// pointer to append-only closure, which just appends to a
 	// (already initialized) linked list tail pointer.
 	var appendTl func(n *list.Node)
 	var hd, tl *list.Node
