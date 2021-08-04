@@ -133,8 +133,6 @@ into one sorted singly linked list.
 
 #### Analysis
 
-[Code](mergek.go)
-
 You can do this with a variation on merge sort:
 take the first list as a combined list.
 Iteratively merge every subsequent list with the combined list,
@@ -152,16 +150,22 @@ Each method call returns a single, sorted linked list.
 Merge the return lists from the left and right half calls.
 Return that merged list.
 
+I combined both of these methods (to share common, 2-list merging code) in
+my [code](mergek.go).
+`mergek -k n0 n1 n2 -- m0 m1 m2 ...` uses the non-recursive version.
+Invocation without the `-k` flag uses the recursive version.
+
 There's a [suggestion](https://www.geeksforgeeks.org/merge-k-sorted-linked-lists-set-2-using-min-heap/)
 floating around the web that a min-heap of lists would work.
-My [code](mergeheap.go) (and [heap package](heap)) for this method.
 There's no "O(n log n)" restriction or hint in the problem statement,
 so this algorithm would fit the problem even though it uses extra space,
-K nodes in an array in my heap implementation.
+K nodes (one for each input linked list) in an array in my heap implementation.
 
 There's a lot more complexity in the min-heap version.
 A separate data structure and supporting functions need to exist
 apart from the code to deal with linked lists directly.
+
+[Code](mergeheap.go) (and [heap package](heap)) implementing this algorithm.
 
 #### Interview Analysis
 
