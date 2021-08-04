@@ -55,41 +55,10 @@ func isSorted(head *list.Node) bool {
 // Destroys lists in the argument slice.
 func mergek(heads []*list.Node) *list.Node {
 
-	var hd, tl *list.Node
-	append := func(n *list.Node) {
-		if hd == nil {
-			hd = n
-			tl = n
-			return
-		}
-		tl.Next = n
-		tl = n
-	}
-
 	combined := heads[0]
 
 	for _, head := range heads[1:] {
-
-		for combined != nil && head != nil {
-			if combined.Data < head.Data {
-				append(combined)
-				combined = combined.Next
-				continue
-			}
-			append(head)
-			head = head.Next
-		}
-
-		if combined != nil {
-			tl.Next = combined
-		}
-		if head != nil {
-			tl.Next = head
-		}
-
-		combined = hd
-		hd = nil
-		tl = nil
+		combined = merge2(combined, head)
 	}
 
 	return combined
