@@ -926,12 +926,6 @@ and constant space.
 
 ### Analysis
 
-Reverse both lists in-place, as per Daily Coding Problem: Problem #465 [Easy],
-one after the other.
-If the 2 lists had an intersection,
-when you walk them back, one of the lists will end at the node
-that was immediately after the intersection node.
-
 If the lists have M and N elements,
 you have to touch each element to reverse them.
 Walking backwards takes less than Min(M, N) node accesses.
