@@ -894,17 +894,47 @@ log-base-2 of n doesn't contribute much change as the order-of-magnitude of list
 The discontinuities at 2 million, 4 million and possibly 1 million
 are puzzling, but probably involve paging or page size.
 
-In order to rule out garbage collection causing teh discontinuities,
+In order to rule out garbage collection causing the discontinuities,
 I wrote a [C transliteration](mergetest.c) of the benchmark program.
 It has a rudimentary linked list implementation,
 and it can either `malloc` every node on demand,
 or do a "slab allocation" of all nodes at any given list size.
 The C benchmark timings ran on the Dell Latitude E6420 laptop.
-The C timings are very similar to the Golang version,
-so I'm going to rule out garbage collection.
-Additionally, in this case it looks like there's very little performance
-benefit to manually managing the linked list allocation/deallocation.
+The C timings are very similar to the Golang version.
+I'm going to rule out garbage collection.
+In this case there's a performance
+hit to manually managing the linked list allocation/deallocation.
 
+---
+## Daily Coding Problem: Problem #963 [Easy]
+
+This problem was asked by Google.
+
+Given two singly linked lists that intersect at some point,
+find the intersecting node.
+The lists are non-cyclical.
+
+For example,
+given A = 3 -> 7 -> 8 -> 10 and B = 99 -> 1 -> 8 -> 10,
+return the node with value 8.
+
+In this example,
+assume nodes with the same value are the exact same node objects.
+
+Do this in O(M + N) time (where M and N are the lengths of the lists)
+and constant space.
+
+### Analysis
+
+Reverse both lists in-place, as per Daily Coding Problem: Problem #465 [Easy],
+one after the other.
+If the 2 lists had an intersection,
+when you walk them back, one of the lists will end at the node
+that was immediately after the intersection node.
+
+If the lists have M and N elements,
+you have to touch each element to reverse them.
+Walking backwards takes less than Min(M, N) node accesses.
 
 ---
 
