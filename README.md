@@ -926,11 +926,17 @@ and constant space.
 
 ### Analysis
 
-If the lists have M and N elements,
-you have to touch each element to reverse them.
-Walking backwards takes less than Min(M, N) node accesses.
-
 ---
+---
+## Daily Coding Problem: Problem #966 [Medium] 
+
+This question was asked by Snapchat.
+
+Given the head to a singly linked list,
+where each node also has a "random" pointer that points to anywhere in the linked list,
+deep clone the list.
+
+### Analysis
 
 ## Cracking the Coding Interview
 
