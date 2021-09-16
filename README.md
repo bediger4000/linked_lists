@@ -391,33 +391,50 @@ I'm more favorably disposed towards this problem.
 
 Straightforward pointer arithmetic led me to write a clunky program.
 I found that [Torvald's good taste in programming](https://medium.com/@bartobri/applying-the-linus-tarvolds-good-taste-coding-requirement-99749f37684a)
-example worked well here:
+example worked well here.
+It avoids any decisions at all, much less dumb `!= nil` checks that visually clutter code.
 
 ```go
- 1    leader := head
- 2    for i := 0; i < k; i++ {
- 3        leader = leader.Next
- 4    }
- 5    indirect := &head
- 6    for leader = leader.Next; leader != nil; leader = leader.Next {
- 7        indirect = &(*indirect).Next
- 8    }
- 9   (*indirect) = (*indirect).Next
+1    leader := head
+2    for i := 0; i < k; i++ {
+3        leader = leader.Next
+4    }
+5    indirect := &head
+6    for leader = leader.Next; leader != nil; leader = leader.Next {
+7        indirect = &(*indirect).Next
+8    }
+9   (*indirect) = (*indirect).Next
 ```
 
-The first for-loop advances `leader` k nodes into the list.
-The second for-loop
+The first for-loop (lines 1-4) advances `leader` k nodes into the list.
+Line 5 sets `indirect` to the address of the variable pointing to the head of the list.
+The variable `head` gets returned at the end of the function.
+The second for-loop (lines 6-8) is tricky to reason about.
+
+* first time through, it puts the address of `head.Next` into `indirect`
+* subsequent times through, it uses the contents of the `Next` field
+to put the address of a `.Next` field into `indirect`
+
+This is dizzying, but it allows splicing a node out with line 9,
+which essentially means `node.Next = node.Next.Next`.
+If k is 1 less than length-of-list, line 9 changes the contents of `head`.
+Remember line 9.
+Otherwise, it splices out the k-1'th node.
 
 #### Interview Analysis
 
 This one is extra-tricky to get correct,
 even after noticing that the problem statement could cause you to delete the head of the list.
+It probably deserves the "[Medium]" rating,
+even though it's merely a linked list problem.
+The pointer manipulation is difficult to get correct
+in the face of k possibly being 1 less than length of list.
 The interviewer should give candidates that notice the head-deletion-possibility
 extra points.
 
 Interviewers should watch for candidates asking what "kth last" means.
 My interpretation is above,
-I'm certain someone could easily interpret the phrase differently.
+I'm certain someone could easily interpret that phrase differently.
 
 ---
 
@@ -619,6 +636,11 @@ has you do, shuffling the array, then creating a new list from
 the shuffled array.
 Prioritizing space over time is begging the candidate to
 at least sketch an algorithm that uses less space.
+
+If you can add an integer "decoration" to the list node,
+setting the decoration to some random number,
+then [sorting](https://github.com/bediger4000/linked_lists#daily-coding-problem-problem-930-medium)
+the linked list on the decoration would work.
 
 ---
 ## Daily Coding Problem: Problem #800 [Medium]  
@@ -938,6 +960,9 @@ I'm going to rule out garbage collection.
 In this case there's a performance
 hit to manually managing the linked list allocation/deallocation.
 
+<!-- what about the random number generator? Does some flaw in the PRNG
+cause problems at that number of pseudo-random numbers? -->
+
 ---
 ## Daily Coding Problem: Problem #963 [Easy]
 
@@ -959,6 +984,8 @@ and constant space.
 
 ### Analysis
 
+I haven't done this.
+
 ---
 ---
 ## Daily Coding Problem: Problem #966 [Medium] 
@@ -970,6 +997,8 @@ where each node also has a "random" pointer that points to anywhere in the linke
 deep clone the list.
 
 ### Analysis
+
+I haven't done this.
 
 ## Cracking the Coding Interview
 
