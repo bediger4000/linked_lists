@@ -41,13 +41,13 @@ func main() {
 func removeKthLast(k int, head *list.Node) *list.Node {
 	leader := head
 
-	// Advance past first k nodes in list. Start at 1 since lead already on
-	// head, first node in list
+	// Advance past first k nodes in list.
 	// Don't check for nil value of leader, k is less than length of list
-	for i := 1; i < k+1; i++ {
+	for i := 0; i < k; i++ {
 		leader = leader.Next
 	}
 
+	// Linus Torvalds' "good taste" in programming method
 	indirect := &head
 
 	for {
