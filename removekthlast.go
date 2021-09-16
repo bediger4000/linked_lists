@@ -32,21 +32,33 @@ func main() {
 	list.Print(head)
 	fmt.Println()
 
-	kthlast := head
-	lead := head
-	for i := 0; i < k+2; i++ {
-		lead = lead.Next
-	}
-
-	for lead != nil {
-		kthlast = kthlast.Next
-		lead = lead.Next
-	}
-
-	// Excise the node that is the k'th last
-	kthlast.Next = kthlast.Next.Next
-
+	head = removeKthLast(k, head)
 	fmt.Printf("Modified list:\n")
 	list.Print(head)
 	fmt.Println()
+}
+
+func removeKthLast(k int, head *list.Node) *list.Node {
+	leader := head
+
+	// Advance past first k nodes in list. Start at 1 since lead already on
+	// head, first node in list
+	// Don't check for nil value of leader, k is less than length of list
+	for i := 1; i < k+1; i++ {
+		leader = leader.Next
+	}
+
+	indirect := &head
+
+	for {
+		leader = leader.Next
+		if leader == nil {
+			break
+		}
+		indirect = &(*indirect).Next
+	}
+
+	(*indirect) = (*indirect).Next
+
+	return head
 }
