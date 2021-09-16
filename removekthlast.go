@@ -58,6 +58,10 @@ func removeKthLast(k int, head *list.Node) *list.Node {
 		indirect = &(*indirect).Next
 	}
 
+	// indirect holds address of Next field of k-1'th
+	// node, or address of head.
+	fmt.Printf("kth last node value %d\n", (*indirect).Data)
+
 	(*indirect) = (*indirect).Next
 
 	return head
