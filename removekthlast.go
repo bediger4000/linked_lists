@@ -48,19 +48,16 @@ func removeKthLast(k int, head *list.Node) *list.Node {
 	}
 
 	// Linus Torvalds' "good taste" in programming method
+	// indirect holds head-of-list address
 	indirect := &head
 
-	for {
-		leader = leader.Next
-		if leader == nil {
-			break
-		}
+	for leader = leader.Next; leader != nil; leader = leader.Next {
 		indirect = &(*indirect).Next
 	}
 
 	// indirect holds address of Next field of k-1'th
-	// node, or address of head.
-	fmt.Printf("kth last node value %d\n", (*indirect).Data)
+	// node, or address of head. *indirect evaluates to the
+	// address of the kth-last node
 
 	(*indirect) = (*indirect).Next
 
