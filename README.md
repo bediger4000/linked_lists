@@ -367,24 +367,57 @@ Do this in constant space and in one pass.
 
 #### Analysis
 
-This problem requires 2 pointers into the list,
-one that leads, and a 2nd that's k+1 elements behind.
-When the leader is null/nil,
-the 2nd pointer has the node before the element to be
-eliminated from the list.
+I'm interpreting "kth last" like this:
 
-Since "k is guaranteed to be smaller than the length of the list",
-I'm not sure there are any corner cases worth talking about.
-This is a very straightforward problem.
-I guess if the interviewer is being picky about "in one pass",
-[my solution](removekthlast.go) uses 2 for-loops,
-one to get the lead pointer to the k-2'th place in the list,
-and one to find the end of the list from there
-and increment both lead and trailing pointers.
+```
+5 -> 4 -> 3 -> 2 -> 1 -> 0
+```
+The item with value 0 is the last item in the above list.
+With this list, the kth-last item has value k.
 
-If you're interviewing for an entry-level position,
-this might be worth asking.
-Otherwise, I don't see it.
+The "k is guaranteed to be smaller than the length of the list"
+condition hides a corner case.
+Suppose you have a list `3 -> 2 -> 1 -> 0`, and k = 3.
+According to my interpretation of "kth last item",
+this requires deleting the head of the list.
+
+"Smaller than the length of the list" could also be 0,
+which would mean deleting the tail of the list.
+
+At first, I thought this was a vacuously simple problem,
+like "reverse a linked list in place".
+After noticing the problem statement could mean deleting the head of the list,
+I'm more favorably disposed towards this problem.
+
+Straightforward pointer arithmetic led me to write a clunky program.
+I found that [Torvald's good taste in programming](https://medium.com/@bartobri/applying-the-linus-tarvolds-good-taste-coding-requirement-99749f37684a)
+example worked well here:
+
+```go
+ 1    leader := head
+ 2    for i := 0; i < k; i++ {
+ 3        leader = leader.Next
+ 4    }
+ 5    indirect := &head
+ 6    for leader = leader.Next; leader != nil; leader = leader.Next {
+ 7        indirect = &(*indirect).Next
+ 8    }
+ 9   (*indirect) = (*indirect).Next
+```
+
+The first for-loop advances `leader` k nodes into the list.
+The second for-loop
+
+#### Interview Analysis
+
+This one is extra-tricky to get correct,
+even after noticing that the problem statement could cause you to delete the head of the list.
+The interviewer should give candidates that notice the head-deletion-possibility
+extra points.
+
+Interviewers should watch for candidates asking what "kth last" means.
+My interpretation is above,
+I'm certain someone could easily interpret the phrase differently.
 
 ---
 
