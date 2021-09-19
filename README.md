@@ -960,8 +960,13 @@ I'm going to rule out garbage collection.
 In this case there's a performance
 hit to manually managing the linked list allocation/deallocation.
 
-<!-- what about the random number generator? Does some flaw in the PRNG
-cause problems at that number of pseudo-random numbers? -->
+I also ran [the benchmark](mergetest2.go)
+using Go's `crypto/rand` cryptographically-secure random number generator,
+to see if there's some problem with `math/rand`
+pseudo-random numbers that causes the weird discontinuities.
+Sorting lists using `crypto/rand` random numbers as sort key yields similar
+odd jumps in elapsed time.
+I'm ruling out the `math/rand` PRNG coincidentally generating adversarial key data.
 
 ---
 ## Daily Coding Problem: Problem #963 [Easy]
