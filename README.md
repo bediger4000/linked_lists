@@ -30,9 +30,9 @@ More files than above exist in this repo.
 Most of the programs depend on the `list` package,
 or the `dllist` package, but nothing more.
 
-## Problems and puzzles
+---
 
-### Read in multiple lists
+## Read in multiple lists
 
 [Code](merge.go)
 
@@ -50,7 +50,7 @@ Found 4 lists
 
 ---
 
-### Build a LIFO, a stack, from a linked list
+## Build a LIFO, a stack, from a linked list
 
 [Code](stk.go)
 
@@ -61,7 +61,7 @@ Empty: true
 ```
 ---
 
-### Daily Coding Problem: Problem #443 [Medium] 
+## Daily Coding Problem: Problem #443 [Medium] 
 
 This problem was asked by Apple.
 
@@ -75,7 +75,7 @@ $ ./queue 1 2 3 4 5
 1 2 3 4 5
 ```
 
-#### Analysis
+### Analysis
 
 [Code](list/queue.go)
 
@@ -93,7 +93,7 @@ Pushing or popping an item from the head of a list is about as basic as things c
 
 ---
 
-### Merge two sorted lists
+## Merge two sorted lists
 
 [Code](sort.go)
 
@@ -109,7 +109,7 @@ The obvious follow-on is [merging N sorted lists](#daily-coding-problem-problem-
 
 ---
 
-### Find the middle item in a linked list
+## Find the middle item in a linked list
 
 [Code](middle.go)
 
@@ -123,7 +123,7 @@ It's arguable what the "middle" of those lists is.
 
 ---
 
-### Daily Coding Problem: Problem #559 [Medium] 
+## Daily Coding Problem: Problem #559 [Medium] 
 
 This problem was asked by Google.
 
@@ -131,7 +131,7 @@ Given k sorted singly linked lists,
 write a function to merge all the lists
 into one sorted singly linked list.
 
-#### Analysis
+### Analysis
 
 You can do this with a variation on merge sort:
 take the first list as a combined list.
@@ -167,7 +167,7 @@ apart from the code to deal with linked lists directly.
 
 [Code](mergeheap.go) (and [heap package](heap)) implementing this algorithm.
 
-#### Interview Analysis
+### Interview Analysis
 
 I'll buy this as a "[Medium]".
 If you're familiar with merge sort,
@@ -203,7 +203,7 @@ and a test with large differences in list sizes.
 
 ---
 
-### Reverse a linked list in place
+## Reverse a linked list in place
 
 This is: Daily Coding Problem: Problem #465 [Easy]
 
@@ -231,7 +231,7 @@ be ensuring that the candidate knew the answer to this one.
 
 ---
 
-### Is a list palindromic?
+## Is a list palindromic?
 
 [Code](palindrome.go)
 
@@ -257,7 +257,7 @@ The case of a palindrome with a single unique element in the middle
 
 ---
 
-### XOR linked list
+## XOR linked list
 
 [Code](xorlist.go)
 
@@ -275,7 +275,7 @@ If using a language that has no pointers (such as Python), you can assume
 you have access to get_pointer and dereference_pointer functions that
 converts between nodes and memory addresses.
 
-#### Analysis of XOR linked list
+### Analysis of XOR linked list
 
 Some programming languages will be more conducive to getting this
 problem correct than others.
@@ -348,7 +348,7 @@ This question almost proves that author wrong.
 
 ---
 
-### Remove kth Last element
+## Remove kth Last element
 
 [Code](removekthlast.go)
 
@@ -365,7 +365,7 @@ so making more than one pass is prohibitively expensive.
 
 Do this in constant space and in one pass.
 
-#### Analysis
+### Analysis
 
 I'm interpreting "kth last" like this:
 
@@ -421,7 +421,7 @@ If k is 1 less than length-of-list, line 9 changes the contents of `head`.
 Remember line 9.
 Otherwise, it splices out the k-1'th node.
 
-#### Interview Analysis
+### Interview Analysis
 
 This one is extra-tricky to get correct,
 even after noticing that the problem statement could cause you to delete the head of the list.
@@ -438,7 +438,7 @@ I'm certain someone could easily interpret that phrase differently.
 
 ---
 
-### Daily Coding Problem: Problem #699 [Easy]
+## Daily Coding Problem: Problem #699 [Easy]
 
 This problem was asked by Airbnb.
 
@@ -451,7 +451,7 @@ it should become 3 -> 5 -> 7 -> 7.
 Given the linked list 1 -> 2 -> 3 -> 4 -> 5 and k = 3,
 it should become 3 -> 4 -> 5 -> 1 -> 2.
 
-#### Analysis
+### Analysis
 
 There's an error with the problem statement.
 One of the two examples is incorrect.
@@ -992,7 +992,6 @@ and constant space.
 I haven't done this.
 
 ---
----
 ## Daily Coding Problem: Problem #966 [Medium] 
 
 This question was asked by Snapchat.
@@ -1005,6 +1004,7 @@ deep clone the list.
 
 I haven't done this.
 
+---
 ## Cracking the Coding Interview
 
 Linked list questions.
