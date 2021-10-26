@@ -1018,10 +1018,38 @@ In this case, you should first remove 3 -> 4 -> -7, then -6 -> 6, leaving only 5
 
 ### Analysis
 
-I haven't done this yet.
+[My code](sum2zero.go)
+
+My algorithm trims sub-lists from the head of the list to whichever
+node causes node values to sum to zero.
+If it reaches the end of the list without getting to a sum of zero,
+it puts the head of the list on the tail of the list of remaining nodes,
+and sets the new head of the list to the old second node of the list.
+Repeat, until the list is zero-length.
+This is an O(n<sup>2</sup>) algorithm.
 
 This might be the [Subset Sum Problem](https://en.wikipedia.org/wiki/Subset_sum_problem)
 reframed as a linked list problem.
+
+### Interview Analysis
+
+"[Easy]" my foot.
+This is at least a "[Medium]" since there's a few pieces to this:
+
+* walking a linked list
+* appending non-zero-sum nodes to the tail of a seperate linked list
+* trimming a variable number of nodes from the head of the list
+
+A moderately experienced programmer will want to find an O(n) solution to this.
+It seems like such an algorithm exists,
+altough I couldn't find it on the web,
+nor could I puzzle it out myself.
+
+This could be a good problem for an intermediate- or even senior-level candidate,
+as long as the interviewer is willing to accept some hand waving over trimming
+the sum-to-zero sub-list from the front of the list.
+There's enough programming to get some sense of the candidate's ability,
+and there's room for discussion of design, alternatives, and test cases.
 
 ---
 ## Cracking the Coding Interview
