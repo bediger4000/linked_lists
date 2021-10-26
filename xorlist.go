@@ -21,7 +21,7 @@ type XorNode struct {
 // Use it like: head,tail = add(head, newnode)
 // Returns head and tail of the XOR-list in defiance of the spec
 // so that I can see the XOR-list work forwards and backwards
-func add(head *XorNode, element *XorNode) (*XorNode, *XorNode) {
+func add(head, element *XorNode) (*XorNode, *XorNode) {
 	if head == nil {
 		// element is the first element in list
 		return element, element
@@ -41,7 +41,7 @@ func add(head *XorNode, element *XorNode) (*XorNode, *XorNode) {
 		previous = uintptr(unsafe.Pointer(node))
 		if next == 0 {
 			// node is the last element in list
-			node.both = node.both ^ uintptr(unsafe.Pointer(element))
+			node.both ^= uintptr(unsafe.Pointer(element))
 			// element.both xor of node and nil
 			element.both = previous
 			break
@@ -71,10 +71,10 @@ func get(head *XorNode, wantIndex int) *XorNode {
 	return nil // didn't get to wantIndex
 }
 
-// print writes a representation of the data in an XOR-list
+// printlist writes a representation of the data in an XOR-list
 // on stdout: 0 -> 1 -> 2 -> nil, or something like that,
 // depends on the list.
-func print(head *XorNode) {
+func printlist(head *XorNode) {
 	node := head
 	var previous uintptr
 	for {
@@ -108,9 +108,9 @@ func main() {
 
 	// Print the list forward and backward just to prove the Xor-property
 	fmt.Printf("Front to back:\n")
-	print(head)
+	printlist(head)
 	fmt.Printf("Back to front:\n")
-	print(tail)
+	printlist(tail)
 
 	// Retrieve every node in the list by its index
 	for i := 0; i < nodeCount; i++ {
