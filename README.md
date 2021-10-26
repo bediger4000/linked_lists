@@ -989,7 +989,7 @@ and constant space.
 
 ### Analysis
 
-I haven't done this.
+I haven't done this, but they problem statement surely hints at the desired answer.
 
 ---
 ## Daily Coding Problem: Problem #966 [Medium] 
@@ -1003,6 +1003,9 @@ deep clone the list.
 ### Analysis
 
 I haven't done this.
+
+The "random" pointer to anywhere in the linked list is
+reminiscent of [skip lists](https://en.wikipedia.org/wiki/Skip_list).
 
 ---
 ## Daily Coding Problem: Problem #1025 [Easy]
