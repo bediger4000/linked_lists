@@ -83,7 +83,7 @@ func recursiveMerge(heads []*list.Node) *list.Node {
 func merge2(p, q *list.Node) *list.Node {
 
 	var hd, tl *list.Node
-	append := func(n *list.Node) {
+	appnd := func(n *list.Node) {
 		if hd == nil {
 			hd = n
 			tl = n
@@ -95,11 +95,11 @@ func merge2(p, q *list.Node) *list.Node {
 
 	for p != nil && q != nil {
 		if p.Data < q.Data {
-			append(p)
+			appnd(p)
 			p = p.Next
 			continue
 		}
-		append(q)
+		appnd(q)
 		q = q.Next
 	}
 

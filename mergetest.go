@@ -62,7 +62,7 @@ func randomValueList(n int) *list.Node {
 func mergesort(head *list.Node) *list.Node {
 
 	var hd, tl *list.Node
-	append := func(n *list.Node) {
+	appnd := func(n *list.Node) {
 		if hd == nil {
 			hd = n
 			tl = n
@@ -92,23 +92,23 @@ func mergesort(head *list.Node) *list.Node {
 
 			for psize > 0 && qsize > 0 && q != nil {
 				if p.Data < q.Data {
-					append(p)
+					appnd(p)
 					p = p.Next
 					psize--
 					continue
 				}
-				append(q)
+				appnd(q)
 				q = q.Next
 				qsize--
 			}
 
 			for ; psize > 0 && p != nil; psize-- {
-				append(p)
+				appnd(p)
 				p = p.Next
 			}
 
 			for ; qsize > 0 && q != nil; qsize-- {
-				append(q)
+				appnd(q)
 				q = q.Next
 			}
 
