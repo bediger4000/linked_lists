@@ -1,7 +1,7 @@
 package list
 
-// SortedMerge assumes formal parameters are numericall
-// sorted, ascending order linked lists, returns a merged
+// SortedMerge assumes formal parameters are numerically
+// sorted, ascending order linked lists. Returns a merged
 // linked list. Formal parameter lists are subsumed
 // in merged list, no longer are separate entities.
 func SortedMerge(list1, list2 *Node) (head *Node) {
