@@ -32,24 +32,6 @@ or the `dllist` package, but nothing more.
 
 ---
 
-## Read in multiple lists
-
-[Code](merge.go)
-
-This is actually just a test for problems that require more than 1 list.
-
-```
-$ ./cp 1 3 0 12 -- 5 -- 6 7 8 9 -- 100 99 98
-
-Found 4 lists
-1 -> 3 -> 0 -> 12 -> 
-5 -> 
-6 -> 7 -> 8 -> 9 -> 
-100 -> 99 -> 98 -> 
-```
-
----
-
 ## Build a LIFO, a stack, from a linked list
 
 [Code](stk.go)
@@ -95,7 +77,7 @@ Pushing or popping an item from the head of a list is about as basic as things c
 
 ## Merge two sorted lists
 
-[Code](sort.go)
+[Code](merge.go)
 
 ```
 $ ./merge  10 6 2 0 -- 11 8 7 4 1
@@ -990,6 +972,11 @@ and constant space.
 ### Analysis
 
 I haven't done this, but they problem statement surely hints at the desired answer.
+
+The problem statement seems ambiguous.
+Are the nodes with values 8 and 10 in the example common between both lists,
+or are there 2 8-valued nodes and 2 10-valued nodes,
+and the problem is to determine that?
 
 ---
 ## Daily Coding Problem: Problem #966 [Medium] 
