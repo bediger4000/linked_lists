@@ -328,6 +328,9 @@ good way to make use of data structures.
 
 This question almost proves that author wrong.
 
+[Good Xor Overview](https://accu.org/journals/overload/20/109/lewin_1915/),
+including a write-up on Xor linked lists.
+
 ---
 
 ## Remove kth Last element
