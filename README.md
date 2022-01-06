@@ -725,11 +725,17 @@ I recall reading an article about C++ back in the early 90s
 that used this sort of problem as a motivator for
 C++ objects and classes.
 
-The problem statement assumes Base 10,
-but it might behoove the candidate to ask about that.
-There's no particular reason for assuming a particular
-base.
+This is also a [LeetCode](https://leetcode.com/problems/add-two-numbers/)
+problem,
+although they do constrain the problem sensibly: no empty lists,
+no "leading zeros".
+
+The problem statement assumes Base 10.
+It might behoove the candidate to ask about that,
+since there's no reason for assuming a particular base.
 I took the easy way out, and worked with base 10.
+
+[My code](sum.go)
 
 The order of the output linked list means keeping a pointer
 to the tail of the output list,
