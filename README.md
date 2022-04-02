@@ -73,6 +73,21 @@ If the candidate doesn't know this one, the problem is worthless.
 Even if the candidate knows the answer, it's just some easy stack manipulation.
 Pushing or popping an item from the head of a list is about as basic as things come.
 
+The Chris Okasaki paper
+[Simple and efficient purely functional queues and deques](https://www.cambridge.org/core/journals/journal-of-functional-programming/article/simple-and-efficient-purely-functional-queues-and-deques/7B3036772616B39E87BF7FBD119015AB)
+describes this algorithm as a "standard trick, reinvented many times",
+and gives references dating to 1981:
+
+* Gries, D. (1981) _The Science of Programming_. Springer-Verlag.
+* Hood, R. and Melville, R. (1981) _Real-time queue operations in pure Lisp_. Information Processing Letters, 13(2):50-53, November.
+* Hood, R. (1982) _The efficient implementation of very-high-level programming language constructs_. PhD thesis, Department of Computer Science, Cornell Universit
+* Burton, F. W. (1982) _An efficient functional implementation of FIFO queues_. Information Processing Letters, 14(5):205-206, July.
+
+I had the impression that this problem was just an amusing use of linked lists,
+but apparently it's an important algorithm that gets used in Lisp,
+where the head and rest of a list are very fast to find,
+but getting the tail element of a list is really slow.
+
 ---
 
 ## Merge two sorted lists
@@ -1088,6 +1103,30 @@ The best you can do is copy the remaining list items' data "one back",
 and trim off the final node.
 This is going to leave dangling pointers in languages without garbage collection
 unless you're very careful.
+
+---
+
+## Three stacks from a single list
+
+### Daily Coding Problem: Problem #1117 [Hard] 
+
+This problem was asked by Microsoft.
+
+Implement 3 stacks using a single list:
+
+```python
+class Stack:
+    def __init__(self):
+        self.list = []
+
+    def pop(self, stack_number):
+        pass
+
+    def push(self, item, stack_number):
+        pass
+```
+
+### Analysis
 
 ---
 
