@@ -26,6 +26,12 @@ import (
 )
 
 func main() {
+	if len(os.Args) < 2 {
+		fmt.Printf("intersection of 2 linked lists\n")
+		fmt.Printf("usage: %s <intersectionvalue> n1.0 ... -- n2.0 ...\n", os.Args[0])
+		return
+	}
+
 	intersectionValue, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -67,8 +73,38 @@ func main() {
 }
 
 // findIntersection
-func findIntersection(hd1, hd0 *list.Node) *list.Node {
-	return nil
+func findIntersection(hd1, hd2 *list.Node) *list.Node {
+	len1 := listLength(hd1)
+	len2 := listLength(hd2)
+
+	for len1 > len2 {
+		hd1 = hd1.Next
+		len1--
+	}
+
+	for len2 > len1 {
+		hd2 = hd2.Next
+		len2--
+	}
+
+	var intersection *list.Node
+
+	for n1, n2 := hd1, hd2; n1 != nil && n2 != nil; n1, n2 = n1.Next, n2.Next {
+		if n1 == n2 {
+			intersection = n1
+			break
+		}
+	}
+
+	return intersection
+}
+
+func listLength(head *list.Node) int {
+	m := 0
+	for p := head; p != nil; p = p.Next {
+		m++
+	}
+	return m
 }
 
 // createIntersection puts the 2 lists (lists[0] and lists[1])
