@@ -993,14 +993,46 @@ assume nodes with the same value are the exact same node objects.
 Do this in O(M + N) time (where M and N are the lengths of the lists)
 and constant space.
 
-### Analysis
+---
 
-I haven't done this, but they problem statement surely hints at the desired answer.
+[Another article](https://muscar.eu/linked-list-intersection.html)
+that poses the same problem.
+The author of this article claims that a friend asked him this problem,
+but the author makes the same mistake of ambiguity about whether
+the lists intersect-by-node-value, or if they share a sub-list,
+where nodes are the same in-memory-objects.
+
+### Analysis
 
 The problem statement seems ambiguous.
 Are the nodes with values 8 and 10 in the example common between both lists,
 or are there 2 8-valued nodes and 2 10-valued nodes,
 and the problem is to determine that?
+
+I'm going to assume that the 2 lists have a common in-memory tail,
+like this:
+
+![linked lists with common tail](inter.png)
+
+But not like this:
+
+![linked lists with single common value](inter2.png)
+
+A situation like this won't work with the usual algorithm.
+I can't think of any algorithm
+that could find the nodes that share a common value
+and meets O(N+M) and constant space.
+
+The standard way of doing this is to find the lengths of the 2 lists,
+then walk the longer list until the remaining part of that
+longer list has the same length as the shorter list.
+Then walk both lists until you arrive at a node with the same address in both lists,
+or a node with the same value.
+
+Talking use of `.next` as the operation to count,
+that gives N+M operations to find list lengths,
+and absolute value of N-M operations to trim the longest list.
+
 
 ---
 ## Daily Coding Problem: Problem #966 [Medium] 
