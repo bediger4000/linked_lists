@@ -1098,6 +1098,32 @@ There's enough programming to get some sense of the candidate's ability,
 and there's room for discussion of design, alternatives, and test cases.
 
 ---
+
+## Three stacks from a single list
+
+### Daily Coding Problem: Problem #1117 [Hard] 
+
+This problem was asked by Microsoft.
+
+Implement 3 stacks using a single list:
+
+```python
+class Stack:
+    def __init__(self):
+        self.list = []
+
+    def pop(self, stack_number):
+        pass
+
+    def push(self, item, stack_number):
+        pass
+```
+
+### Analysis
+
+I haven't done this one.
+
+---
 ## Cracking the Coding Interview
 
 Linked list questions.
@@ -1135,30 +1161,6 @@ The best you can do is copy the remaining list items' data "one back",
 and trim off the final node.
 This is going to leave dangling pointers in languages without garbage collection
 unless you're very careful.
-
----
-
-## Three stacks from a single list
-
-### Daily Coding Problem: Problem #1117 [Hard] 
-
-This problem was asked by Microsoft.
-
-Implement 3 stacks using a single list:
-
-```python
-class Stack:
-    def __init__(self):
-        self.list = []
-
-    def pop(self, stack_number):
-        pass
-
-    def push(self, item, stack_number):
-        pass
-```
-
-### Analysis
 
 ---
 
