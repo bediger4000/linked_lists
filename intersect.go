@@ -51,7 +51,7 @@ func main() {
 		fmt.Println()
 	}
 
-	if !createIntersection(intersectionValue, lists) {
+	if !createIntersection(intersectionValue, lists[0], lists[1]) {
 		fmt.Printf("lists did not intersect\n")
 		return
 	}
@@ -77,7 +77,6 @@ func main() {
 func findIntersection(hd1, hd2 *list.Node) *list.Node {
 	len1 := listLength(hd1)
 	len2 := listLength(hd2)
-	fmt.Printf("List 1 %d elements, list 2 %d elements\n", len1, len2)
 
 	for len1 > len2 {
 		hd1 = hd1.Next
@@ -112,35 +111,35 @@ func listLength(head *list.Node) int {
 
 // createIntersection puts the 2 lists (lists[0] and lists[1])
 // together at a node in each with value intersectionValue
-// If the head element of lists[0] is the intersection value,
-// this doesn't work.
-func createIntersection(intersectionValue int, lists []*list.Node) bool {
-	hd0 := lists[0]
-	hd1 := lists[1]
+// Won't do this correcti if either head node has the value
+// of the desired intersection
+func createIntersection(intersectionValue int, hd0, hd1 *list.Node) bool {
 
-	indir0 := &hd0
+	var before0, before1 *list.Node
 
-	for (*indir0).Data != intersectionValue {
-		indir0 = &(*indir0).Next
-		if *indir0 == nil {
-			return false
+	for node := hd0; node != nil; node = node.Next {
+		if node.Data == intersectionValue {
+			break
 		}
+		before0 = node
 	}
 
-	indir1 := &hd1
-
-	for (*indir1).Data != intersectionValue {
-		indir1 = &(*indir1).Next
-		if *indir1 == nil {
-			return false
-		}
+	if before0 == nil {
+		return false
 	}
 
-	// This works if *indir0 is the address of a .Next
-	// element, so if the head element of lists[0] holds the intersection
-	// value, this won't work. Slice lists is a copy of the one used in
-	// the caller.
-	*indir0 = *indir1
+	for node := hd1; node != nil; node = node.Next {
+		if node.Data == intersectionValue {
+			break
+		}
+		before1 = node
+	}
+
+	if before1 == nil {
+		return false
+	}
+
+	before0.Next = before1.Next
 
 	return true
 }
