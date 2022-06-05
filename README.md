@@ -3,6 +3,8 @@
 A compendium of linked list developer interview questions in Go
 
 [Why Do Interviewers Ask Linked List Questions?](https://hillelwayne.com/post/linked-lists/)
+Why, to see if the candidate could write working code in C.
+Linked list problems are past their freshness date for that purpose.
 
 I wrote a Go [linked list package](list) to provide a framework
 for creating linked lists from textual representations,
