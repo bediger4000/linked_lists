@@ -1029,10 +1029,48 @@ longer list has the same length as the shorter list.
 Then walk both lists until you arrive at a node with the same address in both lists,
 or a node with the same value.
 
-Talking use of `.next` as the operation to count,
-that gives N+M operations to find list lengths,
-and absolute value of N-M operations to trim the longest list.
 
+[Code](intersect.go)
+
+I could not find a good way to put together 2 lists
+if the head of one list is the intersection node.
+
+Invoke the example code like this:
+
+```
+$ go build intersect.go
+$ ./intersect 42 1 2 3 42 -- 100 101 42 102 103
+```
+
+`intersect` will create 2 lists that have a common tail sub-list of
+`42 -> 102 -> 103`. That's outside what the problem statement asks.
+It trims the list `1 -> 2 -> 3 -> 42 -> 102 -> 103`
+to `2 -> 3 -> 42 -> 102 -> 103` to match the length of `100 -> 102 -> 42 -> 102 -> 103`.
+It walks both lists to find the node with value of 42.
+
+### Interview Analysis
+
+Since the problem statement has "O(N+M)" time complexity,
+the candidate should at least handwave through calculating time complexity.
+
+Taking a use of `.Next` as the operation to count,
+that gives N+M operations to find list lengths,
+absolute value of N-M operations to trim the longest list,
+and as many as 2N or 2M (length of shortest list) operations
+to get from the head of the now-same-length lists to the intersecting
+node.
+
+If the longest list is length N, and the shortest has length M,
+then it takes N+M operations to find list lengths,
+N-M operations on the long list to make get to a length M sub-list,
+and no more than 2M operations to get to the intersection node.
+Total operations will sum to no more than (N+M) + (N-M) + 2M = 2N+2M = 2(N + M).
+That's O(N+M) because the constant factor is not part of the "order".
+
+This algorithm is relatively well-known.
+My guess is that the interviewers wanted
+to see if a candidate could remember this algorithm,
+and then talk through getting to O(N+M) for time complexity.
 
 ---
 ## Daily Coding Problem: Problem #966 [Medium] 
