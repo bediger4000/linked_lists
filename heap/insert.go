@@ -13,7 +13,7 @@ func (h Heap) Insert(n *list.Node) Heap {
 }
 
 // siftUp checks that item at index idx in the partially-ordered
-// array is correctly position, changes positions if need be,
+// array is correctly positioned, changes positions if need be,
 // then calls itself on that newly positioned item's index.
 func (h Heap) siftUp(idx int) {
 	if idx == 0 {
