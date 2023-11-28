@@ -30,7 +30,9 @@ $ go build reverse.go
 
 More files than above exist in this repo.
 Most of the programs depend on the `list` package,
-or the `dllist` package, but nothing more.
+or the `dllist` package,
+and sometimes the `heap` package (all in this repo)
+but nothing more.
 
 ---
 
@@ -335,13 +337,11 @@ a single "pointer" that contains both addresses.
 The author also explains a lot of other Xor interview questions,
 and sums up with this analysis of Xor tricks as interview questions:
 
-```
-... interview questions based on this trick do not seem like a great idea.
-They require knowing a slightly obscure trick, but once that trick is known,
-there is not much left to solve ... There is
-also barely a way to show algorithmic thinking ... and no
-good way to make use of data structures.
-```
+> ... interview questions based on this trick do not seem like a great idea.
+> They require knowing a slightly obscure trick, but once that trick is known,
+> there is not much left to solve ... There is
+> also barely a way to show algorithmic thinking ... and no
+> good way to make use of data structures.
 
 This question almost proves that author wrong.
 
