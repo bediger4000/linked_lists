@@ -1139,6 +1139,26 @@ and there's room for discussion of design, alternatives, and test cases.
 
 ---
 
+## Find a cycle in a linked list
+
+Haven't seen this as a Daily Coding Problem, but it seems like it should be one.
+
+### Floyd's algorithm.
+
+[Code](floyds.go)
+
+Looks like the real Floyd's algorithm is more sophisticated
+than the usual tortoise-and-hare algorithms that merely
+specify that a cycle exists.
+It also finds the meeting point of the cycle,
+and the period.
+
+### Brent's algorithm.
+
+https://en.wikipedia.org/wiki/Cycle_detection#Brent's_algorithm
+
+---
+
 ## Three stacks from a single list
 
 ### Daily Coding Problem: Problem #1117 [Hard] 
