@@ -40,6 +40,7 @@ func main() {
 
 		tail.Next = link
 		list.PrintN(head, count+3)
+		fmt.Println("")
 	}
 
 	if cycleExists, at, period := list.Floyds(head); cycleExists {
