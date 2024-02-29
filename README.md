@@ -1142,6 +1142,8 @@ and there's room for discussion of design, alternatives, and test cases.
 ## Find a cycle in a linked list
 
 Haven't seen this as a Daily Coding Problem, but it seems like it should be one.
+It does appear in the book _Cracking the Coding Interview_,
+where it is phrased strangely.
 
 ### Floyd's algorithm.
 
@@ -1149,13 +1151,17 @@ Haven't seen this as a Daily Coding Problem, but it seems like it should be one.
 
 Looks like the real Floyd's algorithm is more sophisticated
 than the usual tortoise-and-hare algorithms that merely
-specify that a cycle exists.
+detects whether a cycle exists or not.
 It also finds the meeting point of the cycle,
 and the period.
 
 ### Brent's algorithm.
 
-https://en.wikipedia.org/wiki/Cycle_detection#Brent's_algorithm
+[Code](brents.go)
+
+Wikipedia also shows [Brent's algorithm](https://en.wikipedia.org/wiki/Cycle_detection#Brent's_algorithm)
+as an alternative to Floyd's.
+Brent's algorithm also finds meeting point and period of the cycle.
 
 ---
 

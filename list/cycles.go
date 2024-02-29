@@ -155,3 +155,49 @@ func Floyds(head *Node) (bool, *Node, int) {
 
 	return true, link, period
 }
+
+// Brents uses Brent's algorithm to find if there's a cycle,
+// at which link the cycle starts, and the cycle's length (period)
+func Brents(head *Node) (bool, *Node, int) {
+
+	if head == nil {
+		return false, nil, -1
+	}
+
+	power := 1
+	period := 1
+
+	tortoise := head
+	hare := tortoise.Next
+
+	for hare != nil && tortoise != hare {
+		if power == period {
+			tortoise = hare
+			power *= 2
+			period = 0
+		}
+		hare = hare.Next
+		period++
+	}
+
+	if hare == nil {
+		return false, nil, -1
+	}
+
+	tortoise = head
+	hare = head
+
+	for i := 0; i < period; i++ {
+		hare = hare.Next
+	}
+
+	link := head
+
+	for tortoise != hare {
+		tortoise = tortoise.Next
+		hare = hare.Next
+		link = link.Next
+	}
+
+	return true, link, period
+}
