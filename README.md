@@ -617,6 +617,7 @@ What if we want to prioritize space over time?
 ### Analysis
 
 I haven't tried this one yet.
+I don't think I will.
 
 "Uniformly shuffling" a finite number of items might be a bit
 tricky on even a 64-bit CPU.
@@ -1306,6 +1307,8 @@ class Stack:
 ### Analysis
 
 I haven't done this one.
+It kind of smells like there's one way to do it,
+and if you know that one way, you get to feel smug.
 
 ---
 ## Cracking the Coding Interview
