@@ -1106,8 +1106,9 @@ the command line.
 It randomly chooses the node that's the extra pointer.
 
 Given a "-g" flag on command line,
-my program prints [GraphViz]()
+my program prints [GraphViz](https://graphviz.org)
 Dot format on stdout.
+The GraphViz `dot` program can render that Dot format file as a PNG.
 
 ![linked list comparison](extra_pointer.png)
 
@@ -1184,7 +1185,7 @@ and then touch every copied node to set the extra pointer.
 I suppose that instead of using a map/hash table to keep the copied
 nodes (keyed by data value),
 you could  walk the linked list to find the node with the required
-data value, and that would end up being O(N<sup>2/sup>)
+data value, and that would end up being O(N<sup>2</sup>)
 The O(N) might weed out candidates that didn't have basic knowledge
 of hash tables, maps or dicts.
 
