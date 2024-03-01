@@ -84,7 +84,7 @@ and gives references dating to 1981:
 
 * Gries, D. (1981) _The Science of Programming_. Springer-Verlag.
 * Hood, R. and Melville, R. (1981) _Real-time queue operations in pure Lisp_. Information Processing Letters, 13(2):50-53, November.
-* Hood, R. (1982) _The efficient implementation of very-high-level programming language constructs_. PhD thesis, Department of Computer Science, Cornell Universit
+* Hood, R. (1982) _The efficient implementation of very-high-level programming language constructs_. PhD thesis, Department of Computer Science, Cornell University
 * Burton, F. W. (1982) _An efficient functional implementation of FIFO queues_. Information Processing Letters, 14(5):205-206, July.
 
 I had the impression that this problem was just an amusing use of linked lists,
@@ -216,7 +216,7 @@ Given the head of a singly linked list, reverse it in-place.
 
 This amounts to taking the head element off a linked list,
 and setting that element's pointer to the reversed list.
-Repeat until the linked list is empty, and all elements are on the reveresed list.
+Repeat until the linked list is empty, and all elements are on the reversed list.
 
 ```
 $ ./reverse 1 2 3 4
@@ -289,13 +289,13 @@ The combination of the two safeties causes my code to look a bit odd.
 The Go compiler allows the programmer to convert any pointer address
 to a pointer of an arbitrary type
 via the semi-magic function `unsafe.Pointer()`.
-One can then convert the pointer of aribtrary type to a
+One can then convert the pointer of arbitrary type to a
 numerical value of type `uintptr`
 Go will do bitwise operations like Xor on `uintptr` values.
 So my code converts pointers to `uintptr` numerical values and back
 a lot.
 
-I've done this problem (in C) as an exercize in the past,
+I've done this problem (in C) as an exercise in the past,
 because it just seemed so outlandish.
 I think that someone who was just informed of this very hacky
 idea (node carries prev XOR next as a single field)
@@ -312,7 +312,7 @@ even in regular doubly linked list operations,
 the XOR just adds to the difficulty,
 as would the shenanigans working around Go's type- and memory-safety.
 The programming language chosen should influence the interviewer's
-final judgement.
+final judgment.
 The interviewer should expect some mild flailing from any candidate.
 Look for candidates that can work this problem out carefully.
 
@@ -1080,15 +1080,111 @@ and then talk through getting to O(N+M) for time complexity.
 This question was asked by Snapchat.
 
 Given the head to a singly linked list,
-where each node also has a "random" pointer that points to anywhere in the linked list,
+where each node also has a "random" pointer
+that points to anywhere in the linked list,
 deep clone the list.
 
 ### Analysis
 
-I haven't done this.
+[My code](extra.go)
+
+```
+$ go build extra.go
+$ ./extra 0 1 2 3 4 5 6 > textoutput
+$ ./extra -g 0 1 2 3 4 5 6 > list.dot
+$ dot -Tpng -o list.png list.dot
+$ ./extra 0 1 2 3 4 5 6
+    Original                          |    Deep Copy
+0xc0000100a8   0   0xc000010150   7   |   0xc0000101e0   0   0xc000010288   7
+0xc0000100c0   1   0xc0000100f0   3   |   0xc0000101f8   1   0xc000010228   3
+...
+```
+
+My program creates a linked list with integer data as represented on,
+and in the same order as,
+the command line.
+It randomly chooses the node that's the extra pointer.
+
+Given a "-g" flag on command line,
+my program prints [GraphViz]()
+Dot format on stdout.
+
+Without the "-g" flag,
+my program prints a text version of both lists for comparison,
+along with performing consistency checks that only output when something's wrong,
+like a node appearing on both lists,
+or a .Extra pointer containing the other list address.
 
 The "random" pointer to anywhere in the linked list is
-reminiscent of [skip lists](https://en.wikipedia.org/wiki/Skip_list).
+reminiscent of [skip lists](https://en.wikipedia.org/wiki/Skip_list),
+except skip list extra pointers only point forward in the list.
+
+This requires a slightly different list node:
+
+```
+type Node struct {
+    Data  int
+    Next  *Node
+    Extra *Node
+}
+```
+
+Note that the problem statement says "each node" has an extra pointer,
+and that it says that extra pointer can point "anywhere" in the list.
+Sounds like it can refer to nodes appearing previously and subsequently
+in the entire list.
+Possibly two nodes can refer to the same extra node.
+
+My deep copy function walks the original list in order,
+creating a copy list in reverse order.
+Along with that, it fills in a Go `map`, keyed by integer list node value,
+of the copies of the original list's nodes.
+
+The nodes are only partially copied: the "copies" keep a pointer to the
+"random" node in the original list.
+
+My function reverses the copied list in place,
+looking up the *copied node* in the Go map that matches the data value of the "random"
+node of the original list.
+It substitutes the copied node for the original list node of the same data value.
+
+You could certainly substitute some other data structure for the map,
+but given that the "random", extra pointer can point backwards or forwards,
+I don't think you can do all the work in one pass.
+
+### Interview Analysis
+
+This does rate a "[Medium]" - it involves a more complicated list node,
+and some algorithmic thinking,
+along with some other data structure required to copy the link to
+an extra, randomly chosen link.
+
+I think this is a pretty good linked list interview question.
+The interviewer would get to see more coding than in a lot of linked list problems,
+and see the candidate choose another data structure,
+which the "randomly chosen" extra pointer demands.
+
+Some variants I found on the web include phrases like
+the second pointer
+"points to anywhere in the linked list, or is null".
+This is just some extra checks in the copy function,
+it adds nothing to the problem.
+Another variant asks for the work to be done in O(N) time,
+where N is the number of nodes in the list.
+
+My algorithm walks two lists of N items, that's O(N) since 2 is a constant.
+Adding pointers to a map (hash table) is O(1) (amortized),
+as is looking up the pointers.
+
+Seems like it would be hard to write this in other than O(N) time.
+The code has to touch every node to copy it,
+and then touch every copied node to set the extra pointer.
+I suppose that instead of using a map/hash table to keep the copied
+nodes (keyed by data value),
+you could  walk the linked list to find the node with the required
+data value, and that would end up being O(N<sup>2/sup>)
+The O(N) might weed out candidates that didn't have basic knowledge
+of hash tables, maps or dicts.
 
 ---
 ## Daily Coding Problem: Problem #1025 [Easy]
@@ -1123,12 +1219,12 @@ reframed as a linked list problem.
 This is at least a "[Medium]" since there's a few pieces to this:
 
 * walking a linked list
-* appending non-zero-sum nodes to the tail of a seperate linked list
+* appending non-zero-sum nodes to the tail of a separate linked list
 * trimming a variable number of nodes from the head of the list
 
 A moderately experienced programmer will want to find an O(n) solution to this.
 It seems like such an algorithm exists,
-altough I couldn't find it on the web,
+although I couldn't find it on the web,
 nor could I puzzle it out myself.
 
 This could be a good problem for an intermediate- or even senior-level candidate,
