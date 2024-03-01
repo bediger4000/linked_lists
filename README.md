@@ -1109,6 +1109,8 @@ Given a "-g" flag on command line,
 my program prints [GraphViz]()
 Dot format on stdout.
 
+![linked list comparison](extra_pointer.png)
+
 Without the "-g" flag,
 my program prints a text version of both lists for comparison,
 along with performing consistency checks that only output when something's wrong,
