@@ -1268,14 +1268,15 @@ Finding a cycle in a linked list is easy.
 Finding the node where the cycle intersects the rest of the list
 is a lot harder.
 
-An interviewer could definitely ask to find if a potentially-broken
+An interviewer could definitely ask to find if a potentially broken
 linked list has a cycle and expect some kind of an answer.
-You'd probably get something were the node's get kept in a map or dict.
-With some Socratic Questioning, the interviewer might get a tortoise-and-hare,
+The candidate would probably code something where the nodes get kept in a map or dict.
+With some Socratic Questioning,
+the interviewer might get a tortoise-and-hare,
 two pointer solution.
 
-Floyd's algorithm is so finicky about where the hare and tortoise start,
-that I doubt an interviewer could get anyone to code it.
+Floyd's algorithm is finicky about where the hare and tortoise start.
+I doubt an interviewer could get anyone to code it.
 Brent's algorithm is entirely opaque.
 
 This would not be a great interview question.
