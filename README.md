@@ -1011,6 +1011,8 @@ The problem statement seems ambiguous.
 Are the nodes with values 8 and 10 in the example common between both lists,
 or are there 2 8-valued nodes and 2 10-valued nodes,
 and the problem is to determine that?
+There is a clarifying note about nodes with identical values,
+but it's oddly written.
 
 I'm going to assume that the 2 lists have a common in-memory tail,
 like this:
@@ -1029,7 +1031,8 @@ and meets O(N+M) and constant space.
 The standard way of doing this is to find the lengths of the 2 lists,
 then walk the longer list until the remaining part of that
 longer list has the same length as the shorter list.
-Then walk both lists until you arrive at a node with the same address in both lists,
+Then walk both lists in parallel
+until you arrive at a node with the same address in both lists,
 or a node with the same value.
 
 
@@ -1047,8 +1050,8 @@ $ ./intersect 42 1 2 3 42 -- 100 101 42 102 103
 
 `intersect` will create 2 lists that have a common tail sub-list of
 `42 -> 102 -> 103`. That's outside what the problem statement asks.
-It trims the list `1 -> 2 -> 3 -> 42 -> 102 -> 103`
-to `2 -> 3 -> 42 -> 102 -> 103` to match the length of `100 -> 102 -> 42 -> 102 -> 103`.
+My code trims the list `1 -> 2 -> 3 -> 42 -> 102 -> 103`
+to `2 -> 3 -> 42 -> 102 -> 103` to match the length of `100 -> 101 -> 42 -> 102 -> 103`.
 It walks both lists to find the node with value of 42.
 
 ### Interview Analysis
@@ -1066,7 +1069,9 @@ node.
 If the longest list is length N, and the shortest has length M,
 then it takes N+M operations to find list lengths,
 N-M operations on the long list to make get to a length M sub-list,
-and no more than 2M operations to get to the intersection node.
+and no more than 2M operations 
+(one on each list in parallel)
+to get to the intersection node.
 Total operations will sum to no more than (N+M) + (N-M) + 2M = 2N+2M = 2(N + M).
 That's O(N+M) because the constant factor is not part of the "order".
 
@@ -1372,3 +1377,5 @@ to an earlier node, so as to make a loop in the linked list.
 
 This isn't the usual definition of a "circular linked list".
 This is just a list with (mistakenly) a cycle in it.
+
+<!-- https://jasonpunyon.com/blog/2024/04/10/farey-numbers-and-linked-lists/ -->
