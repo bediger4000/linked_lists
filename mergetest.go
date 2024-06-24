@@ -15,10 +15,9 @@ func main() {
 	for n := 10000; n < 8000000; n += 200000 {
 		var total time.Duration
 		for i := 0; i < 10; i++ {
-			before := time.Now()
 			head := randomValueList(n)
 
-			before = time.Now()
+			before := time.Now()
 			nl := mergesort(head)
 			elapsed := time.Since(before)
 
