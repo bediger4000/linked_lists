@@ -936,6 +936,9 @@ just some pointers and counters.
 So if you buy it's a merge sort,
 this does the task in O(n log n) time and constant space.
 
+I also wrote a completely [recursive merge sort](recursive_mergesort.go)
+for comparison.
+
 ### Benchmarking
 
 I wrote a [benchmark program](mergetest.go) to try out the merge sorting.
