@@ -931,10 +931,16 @@ but that's on a doubly linked list.
 
 I [implemented](mergesort.go) [merge sort](https://en.wikipedia.org/wiki/Merge_sort).
 My version is close to the "bottom-up implementation with lists".
-It does not use a "small fixed size array",
-just some pointers and counters.
-So if you buy it's a merge sort,
-this does the task in O(n log n) time and constant space.
+My algorithm is strictly iterative, so no (control flow) stack growth.
+It uses five list-node-pointer variables,
+one integer to count the pairs of sublists merged,
+one for-loop-counter integer,
+and two size-of-sublist integer counts.
+One of the list-node-pointer variables is the formal argument to
+an anonymouse function that exists only to de-clutter flow-of-control,
+so it could be eliminated.
+If you buy that I wrote a merge sort,
+it does the task in O(n log n) time and constant space.
 
 I also wrote a completely [recursive merge sort](recursive_mergesort.go)
 for comparison.
