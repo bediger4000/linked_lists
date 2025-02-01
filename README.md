@@ -78,7 +78,7 @@ Even if the candidate knows the answer, it's just some easy stack manipulation.
 Pushing or popping an item from the head of a list is about as basic as things come.
 
 The Chris Okasaki paper
-[Simple and efficient purely functional queues and deques](https://www.cambridge.org/core/journals/journal-of-functional-programming/article/simple-and-efficient-purely-functional-queues-and-deques/7B3036772616B39E87BF7FBD119015AB)
+[Simple and efficient purely functional queues and dequeues](https://www.cambridge.org/core/journals/journal-of-functional-programming/article/simple-and-efficient-purely-functional-queues-and-deques/7B3036772616B39E87BF7FBD119015AB)
 describes this algorithm as a "standard trick, reinvented many times",
 and gives references dating to 1981:
 
@@ -937,7 +937,7 @@ one integer to count the pairs of sublists merged,
 one for-loop-counter integer,
 and two size-of-sublist integer counts.
 One of the list-node-pointer variables is the formal argument to
-an anonymouse function that exists only to de-clutter flow-of-control,
+an anonymous function that exists only to de-clutter flow-of-control,
 so it could be eliminated.
 If you buy that I wrote a merge sort,
 it does the task in O(n log n) time and constant space.
@@ -1388,3 +1388,16 @@ This isn't the usual definition of a "circular linked list".
 This is just a list with (mistakenly) a cycle in it.
 
 <!-- https://jasonpunyon.com/blog/2024/04/10/farey-numbers-and-linked-lists/ -->
+
+---
+
+## Nick Parlante's Linked List Problems
+
+Circa 1999-2002, [Nick Parlante}(https://cs.stanford.edu/people/nick/),
+a Stanford University Computer Science lecturer,
+put together a [document](http://cslibrary.stanford.edu/105/)
+with 18 linked list problems, sorted roughly in difficulty order.
+They aren't phrased as "interview questions",
+but some of them effectively duplicate linked list problems above.
+
+[My solutions](parlante) are in a separate directory.
