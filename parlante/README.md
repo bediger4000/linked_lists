@@ -29,7 +29,7 @@ the data value stored at that index position.
 the second nodes is index 1, ... and so on.
 So for the list {42, 13, 666} `GetNth()` with index 1 should return 13.
 The index should be in the range [0, length-1].
-If it is not, `GetNth()` should assert() fail (or you could implement som other error case stratigy).
+If it is not, `GetNth()` should assert() fail (or you could implement some other error case strategy).
 
 [Code](getnth.go)
 
@@ -52,7 +52,7 @@ I'm doing this in Go, no such function can be implemented.
 
 Write a `Pop()` function that's the opposite of `Push()`.
 `Pop()` takes a non-empty list, deletes the head node, and returns the head node's data.
-`Pop()` should assert() failif ther is not a node to pop.
+`Pop()` should assert() fail if there is not a node to pop.
 
 [Code](pop.go)
 
@@ -287,9 +287,20 @@ and building it up while going through 'a' and 'b'.
 
 ```
 $ go build sortedmerge.go
-$ ./sortedmerge 1 3 5 -- 0 4 7     # /home/bediger/src/go/src/linked_lists/parlante
+$ ./sortedmerge 1 3 5 -- 0 4 7
 a: 1 -> 3 -> 5 -> 
 b: 0 -> 4 -> 7 -> 
 merged: 0 -> 1 -> 3 -> 4 -> 5 -> 7 -> 
 ```
 
+## 15 - MergeSort()
+
+(This problem requires recursion) Given `FrontBackSplit()` and `SortedMerge()`,
+it's pretty easy to write a classic recursive `MergeSort()`:
+split the list into two smaller lists,
+recursively sort those lists,
+and finally merge the two sorted lists together into a single sorted list.
+Ironically, this problem is easier than either `FrontBackSplit()`
+or `SortedMerge()`.
+
+I spent the summer of 2024 [investigating mergesort](../../mergesort)
