@@ -33,16 +33,34 @@ func main() {
 
 func SortedIntersect(a, b *list.Node) *list.Node {
 
-	if a == nil || b == nil {
-		return nil
+	var intersection *list.Node
+
+	for a != nil && b != nil {
+
+		first, second := a, b
+		if b.Data < a.Data {
+			first, second = b, a
+		}
+
+		for ; first != nil && first.Data < second.Data; first = first.Next {
+		}
+
+		if first != nil && first.Data == second.Data {
+			node := &list.Node{
+				Data: first.Data,
+				Next: intersection,
+			}
+			intersection = node
+			a = first.Next
+			b = second.Next
+
+			continue
+		}
+
+		// first == nil or first.Data > second.Data
+		a = first
+		b = second
 	}
 
-	first, second := a, b
-	if b.Data < a.Data {
-		first, second = b, a
-	}
-
-	for ; first.Data < second.Data; first = first.Next {
-	}
-
+	return intersection
 }
