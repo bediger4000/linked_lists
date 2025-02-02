@@ -33,7 +33,8 @@ func main() {
 
 func SortedIntersect(a, b *list.Node) *list.Node {
 
-	var intersection *list.Node
+	dummy := &list.Node{}
+	tail := dummy
 
 	for a != nil && b != nil {
 
@@ -48,9 +49,9 @@ func SortedIntersect(a, b *list.Node) *list.Node {
 		if first != nil && first.Data == second.Data {
 			node := &list.Node{
 				Data: first.Data,
-				Next: intersection,
 			}
-			intersection = node
+			tail.Next = node
+			tail = node
 			a = first.Next
 			b = second.Next
 
@@ -62,5 +63,5 @@ func SortedIntersect(a, b *list.Node) *list.Node {
 		b = second
 	}
 
-	return intersection
+	return dummy.Next
 }
