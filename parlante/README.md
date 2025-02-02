@@ -330,7 +330,10 @@ constraint that the lists are sorted to find common nodes efficiently.
 
 ```
 $ go build sortedinterset.go
-$ ./sortedinterset 1 3 5 -- 0 4 7
+$ ./sortedintersect 1 5 10 20 -- 2 5 7 20
+a: 1 -> 5 -> 10 -> 20 -> 
+b: 2 -> 5 -> 7 -> 20 -> 
+intersection: 20 -> 5 -> 
 ```
 
 ## 17 - Reverse()
