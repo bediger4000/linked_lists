@@ -119,6 +119,13 @@ It should use `SortedInsert()`.
 
 [Code](insertsort.go)
 
+```
+$ go build insertsort.go
+$ ./insertsort 1 99 0 2 11 4 3
+1 -> 99 -> 0 -> 2 -> 11 -> 4 -> 3 -> 
+0 -> 1 -> 2 -> 3 -> 4 -> 11 -> 99 -> 
+```
+
 ## 8 - Append()
 
 Write an `Append()` function that takes two lists,
@@ -304,4 +311,60 @@ and finally merge the two sorted lists together into a single sorted list.
 Ironically, this problem is easier than either `FrontBackSplit()`
 or `SortedMerge()`.
 
-I spent the summer of 2024 [investigating mergesort](../../mergesort)
+I spent the summer of 2024 [investigating mergesort](/mergesort)
+
+## 16 - SortedIntersect()
+
+Given two lists sorted in increasing order,
+create and return a new list representing the intersection of the two lists.
+The new list should be made with its own memory -
+the original lists should not be changed.
+In other words,
+this should be `Push()` list building, not `MoveNode()`.
+Ideally, each list should only be traversed once.
+This problem, along with `Union()` and `Difference()`
+form a family of clever algorithms that exploit the
+constraint that the lists are sorted to find common nodes efficiently.
+
+[Code](sortedintersect.go]
+
+```
+$ go build sortedinterset.go
+$ ./sortedinterset 1 3 5 -- 0 4 7
+```
+
+## 17 - Reverse()
+
+Write an iterative `Reverse()` function
+that reverses a list
+by rearranging all the `.next` pointers and the head pointer.
+Ideally, `Reverse()` should only need to make one pass of the list.
+The iterative solution is moderately complex.
+
+[Code](reverse.go]
+
+```
+$ go build reverse.go
+$ ./reverse  1 2 3 4
+source list: 1 -> 2 -> 3 -> 4 -> 
+
+Reversed:    4 -> 3 -> 2 -> 1 -> 
+
+```
+
+## 18 - RecursiveReverse()
+
+(This problem is difficult and is only possible if you are familiar with recursion.)
+There is a short and efficient recursive solution to this problem.
+As before, the code should only make a single pass over the list.
+Doing it with multiple passes is easier but very slow,
+so here we insist on doing it in one pass.
+Solving this problem requires a real understanding of pointer code and recursion.
+
+```
+$ go build recursivereverse.go
+$ ./recursivereverse 1 2 3 4
+source list: 1 -> 2 -> 3 -> 4 -> 
+
+Reversed:    4 -> 3 -> 2 -> 1 -> 
+```
