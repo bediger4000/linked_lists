@@ -1393,7 +1393,7 @@ This is just a list with (mistakenly) a cycle in it.
 
 ## Nick Parlante's Linked List Problems
 
-Circa 1999-2002, [Nick Parlante}(https://cs.stanford.edu/people/nick/),
+Circa 1999-2002, [Nick Parlante](https://cs.stanford.edu/people/nick/),
 a Stanford University Computer Science lecturer,
 put together a [document](http://cslibrary.stanford.edu/105/)
 with 18 linked list problems, sorted roughly in difficulty order.
