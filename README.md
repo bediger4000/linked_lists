@@ -15,7 +15,7 @@ It's not as fully realized.
 
 Both of these packages only have integer-valued list nodes.
 There's absolutely no reason to use these packages except
-when developing answers to interview questions.
+when developing answers to interview questions or doing coding problems.
 
 ## Building
 
