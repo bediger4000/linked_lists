@@ -14,6 +14,7 @@ func main() {
 		if os.Args[i] == "--" {
 			a = list.Compose(os.Args[1:i])
 			b = list.Compose(os.Args[i:])
+			break
 		}
 	}
 
