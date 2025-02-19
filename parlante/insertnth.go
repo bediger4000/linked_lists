@@ -37,7 +37,7 @@ func InsertNth(head **list.Node, index int, value int) {
 
 	node := head
 
-	for i := 0; i < index; i++ {
+	for i := 0; i < index && *node != nil; i++ {
 		node = &((*node).Next)
 	}
 
