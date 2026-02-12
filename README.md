@@ -393,7 +393,7 @@ I'm more favorably disposed towards this problem.
 
 Straightforward pointer arithmetic led me to write a clunky program.
 I found that [Torvald's good taste in programming](https://medium.com/@bartobri/applying-the-linus-tarvolds-good-taste-coding-requirement-99749f37684a)
-example worked well here.
+[example](https://github.com/mkirchner/linked-list-good-taste) worked well here.
 It avoids any decisions at all, much less dumb `!= nil` checks that visually clutter code.
 
 ```go
