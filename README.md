@@ -74,7 +74,7 @@ leaving the enqueue stack empty.
 On an enqueue, push the item on the enqueue stack.
 
 If the candidate doesn't know this one, the problem is worthless.
-Even if the candidate knows the answer, it's just some easy stack manipulation.
+Even if the candidate knows the answer, it's some easy stack manipulation.
 Pushing or popping an item from the head of a list is about as basic as things come.
 
 The Chris Okasaki paper
@@ -87,7 +87,7 @@ and gives references dating to 1981:
 * Hood, R. (1982) _The efficient implementation of very-high-level programming language constructs_. PhD thesis, Department of Computer Science, Cornell University
 * Burton, F. W. (1982) _An efficient functional implementation of FIFO queues_. Information Processing Letters, 14(5):205-206, July.
 
-I had the impression that this problem was just an amusing use of linked lists,
+I had the impression that this problem was merely an amusing use of linked lists,
 but apparently it's an important algorithm that gets used in Lisp,
 where the head and rest of a list are very fast to find,
 but getting the tail element of a list is really slow.
@@ -227,7 +227,7 @@ $ ./reverse 1 2 3 4
 There's not a lot of coding for this one.
 Seems like this might be good for one of several small problems
 posed to an entry-level job candidate.
-Other than that, it seems like the interviewer would just
+Other than that, it seems like the interviewer would
 be ensuring that the candidate knew the answer to this one.
 
 ---
@@ -296,8 +296,8 @@ So my code converts pointers to `uintptr` numerical values and back
 a lot.
 
 I've done this problem (in C) as an exercise in the past,
-because it just seemed so outlandish.
-I think that someone who was just informed of this very hacky
+because it seemed so outlandish.
+I think that someone who was recently informed of this very hacky
 idea (node carries prev XOR next as a single field)
 might have a lot of trouble with it.
 `node->next` and `node->prev` are one thing,
@@ -343,10 +343,13 @@ and sums up with this analysis of Xor tricks as interview questions:
 > also barely a way to show algorithmic thinking ... and no
 > good way to make use of data structures.
 
-This question almost proves that author wrong.
+The XOR linked list interview question almost proves that author wrong.
 
 [Good Xor Overview](https://accu.org/journals/overload/20/109/lewin_1915/),
 including a write-up on Xor linked lists.
+
+Simon Tatham on [XOR](https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/)
+in general.
 
 ---
 
@@ -696,8 +699,8 @@ and the example doesn't clarify it.
 The Daily Coding problem comes up with a different interpretation
 than any I can see.
 
-It's just barely possible that the point of this question is
-to see if the candidate asks questions or just plows on with
+It's barely possible that the point of this question is
+to see if the candidate asks questions or plows on with
 whatever interpretation comes to mind.
 It's also said that when the Trickbot ransomware gang recruited developers,
 they passed on candidates that asked too many questions.
@@ -788,7 +791,7 @@ The third tricky piece is two original lists of different sizes.
 The problem statement cleverly doesn't mention this,
 but it's implicit in "adding two numbers".
 It took me two attempts to realize that a single loop can walk
-two lists of different sizes, you just have to advance only
+two lists of different sizes, you have to advance only
 the non-nil list nodes.
 
 The fourth tricky piece is pathological inputs like:
@@ -1185,7 +1188,7 @@ which the "randomly chosen" extra pointer demands.
 Some variants I found on the web include phrases like
 the second pointer
 "points to anywhere in the linked list, or is null".
-This is just some extra checks in the copy function,
+This is some extra checks in the copy function,
 it adds nothing to the problem.
 Another variant asks for the work to be done in O(N) time,
 where N is the number of nodes in the list.
@@ -1385,7 +1388,7 @@ to an earlier node, so as to make a loop in the linked list.
 #### Analysis
 
 This isn't the usual definition of a "circular linked list".
-This is just a list with (mistakenly) a cycle in it.
+This is a list with (mistakenly) a cycle in it.
 
 <!-- https://jasonpunyon.com/blog/2024/04/10/farey-numbers-and-linked-lists/ -->
 
